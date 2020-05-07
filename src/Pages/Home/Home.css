@@ -1,0 +1,68 @@
+.home-div{
+    min-width: 100% !important;
+    margin-top: 5rem;
+}
+
+
+.home{
+    background-image: url("https://supplychainbeyond.com/wp-content/uploads/2018/10/chain-of-custody-solutions-in-supply-chain-management-1920x1080.jpg");
+    margin-top: -5rem;
+    background-size:100% auto;
+    background-repeat: no-repeat;
+    min-width: 100vw;
+}   
+
+.home-row{
+    padding: 10rem;
+    padding-top: 10rem;
+}
+
+@media only screen and (max-width : 775px){
+    .home-row{
+        padding: 5rem;
+    }
+
+}
+
+
+@media only screen and (max-width : 579px){
+    .home-row{
+        padding: 1rem;
+    }
+
+}
+
+
+@media only screen and (max-width : 495px){
+    .title h1{
+        font-size: 2rem;
+    }
+    .sec1{
+        margin-top: -2.6rem;
+    }
+
+}
+
+
+@media only screen and (max-width : 360px){
+    .home-row{
+        padding: 0.5rem;
+    }
+
+    .title h1{
+        font-size: 1.5rem;
+    }
+    .title h5{
+        font-size: 1rem;
+    }
+    
+    .title button{
+        margin-top: -1rem;
+    }
+
+}
+
+.section {
+    padding: 3rem 0;
+    min-width: 100vw;
+}

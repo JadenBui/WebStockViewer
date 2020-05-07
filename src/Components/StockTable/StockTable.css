@@ -1,0 +1,18 @@
+.spinner-grow{
+      height: 5rem !important;
+      width: 5rem !important;
+      margin-top: 20rem;
+}
+
+.errorDisplay{
+    text-align: center;
+    padding: 20rem;
+    min-height: 100%;
+}
+
+.message{
+    background-color: whitesmoke;
+    width: fit-content;
+    margin: 20rem auto 0 auto !important;
+    padding: 0.5rem;
+}

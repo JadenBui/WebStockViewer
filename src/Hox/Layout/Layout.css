@@ -1,0 +1,8 @@
+.layout{
+    min-height: calc(100vh - 70px);
+    background-image: url("../../assets/images/close-up-of-coins-315788.jpg");
+    background-size: 100vh auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

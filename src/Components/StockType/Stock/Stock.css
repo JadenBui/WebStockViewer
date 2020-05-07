@@ -1,0 +1,32 @@
+.lable:hover{
+    background-color: grey;
+}
+
+.stock{
+    width: 80rem;
+    margin:auto;
+    padding: 5rem;
+    background-color: rgba(5, 0, 0, 0.897);
+}
+
+.chart{
+   color: wheat;
+}
+
+.badge{
+    margin: 1rem;
+}
+
+.stock-page{
+    min-height: 100%;
+    padding: 10rem;
+}
+
+@media  only screen and (max-width: 360px){
+    .stock{
+        width: 50%;
+    }
+    .custom{
+        margin: 2rem !important;
+    }
+}

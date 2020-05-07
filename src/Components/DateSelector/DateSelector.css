@@ -1,0 +1,12 @@
+.dateSelector{
+    margin: auto;
+}
+
+.inline{
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.search{
+    margin: 0;
+}

@@ -1,0 +1,22 @@
+.stocks{
+    margin: auto;
+    width: 600px;
+    height: 650px;
+    background-color: black !important;
+}
+
+.stocks-page{
+    min-height: 100%;
+    padding: 5rem;
+}
+
+.dropDM{
+    background: black !important;
+}
+
+@media only screen and (max-width:430px){
+    .stocks{
+        width: 600px;
+        height: 650px;
+    }    
+}

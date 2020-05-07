@@ -1,0 +1,20 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios';
+
+const ApiGetter = (tag) => {
+    const [data, setData] = useState([]);
+    const [loading,setLoading] = useState(true);
+    const [error,setError] = useState(null);
+    useEffect(() => {
+            setLoading(true)
+            axios.get(`http://131.181.190.87:3000/stocks/${tag}`)
+            .then(res => res.data)
+            .then(res => {setTimeout(()=>{setLoading(false)},700);return res})
+            .then(res => setData(res))
+            .catch(e=> {setLoading(false);setError(e)});
+
+    }, [tag]);
+    return [data, loading,error];
+}
+
+export default ApiGetter;

@@ -1,0 +1,25 @@
+.register{
+    min-height: 100%;
+    min-width: 100%;
+      
+
+    width: 100%;
+    height: auto;
+      
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* .register-page{
+    z-index: 100;
+} */
+
+.register-div{
+    margin-top: 5rem;
+}
+
+.fr{
+    background-color: white;
+}
+
