@@ -1,6 +1,4 @@
 import React from 'react'
-import { Label, Table } from 'semantic-ui-react'
-import { v4 as uuidv4 } from 'uuid'
 import './Stock.css'
 import { MDBBtn, MDBAnimation, MDBAlert, MDBBadge } from 'mdbreact'
 import DatePicker from '../../DateSelector/DateSelector'
@@ -24,7 +22,7 @@ const Stock = ({ data, chartData, user, onClick, onSearch }) => {
                         </MDBAlert>}
                     {chartData ?
                         <div className="stock-table">
-                            <Stocks onClick={() => void 0} className={"ag-theme-alpine-dark stocks-stock"}
+                            <Stocks onClick={() => void 0} className={"ag-theme-alpine-dark stocks-stock"} colSize={135}
                                 stockData={chartData.map(data => { return { timestamp: new Date(data.timestamp).toDateString(), open: data.open, high: data.high, low: data.low, close: data.close, volumes: data.volumes } })} />
                         </div>
                         :
