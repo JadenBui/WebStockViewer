@@ -75,7 +75,6 @@ const StockTable = ({user}) => {
         })
       const chartData = data.data;
       setChart({dataLine:chartData});
-      console.log(chartData);
     }catch(e){
       console.log(e.message);
     }
