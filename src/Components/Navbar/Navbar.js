@@ -21,7 +21,7 @@ const ToolBar = ({ auth, handleLogOut }) => {
 
   return (
     <div className="nav-home">
-      <MDBNavbar color="aqua-gradient" dark expand="md" fixed="top" scrolling transparent>
+      <MDBNavbar color="morpheus-den-gradient" dark expand="md" fixed="top" scrolling transparent>
         <MDBNavbarBrand>
           <strong className="white-text">StockJD</strong>
         </MDBNavbarBrand>
