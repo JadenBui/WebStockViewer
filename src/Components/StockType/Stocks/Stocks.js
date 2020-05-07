@@ -7,7 +7,7 @@ import './Stocks.css'
 import { MDBAnimation, MDBCol, MDBRow } from "mdbreact";
 import SelectBar from '../../SelectBar/SelectBar'
 
-const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, handleChangeClient, className }) => {
+const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, handleChangeClient, className, colSize }) => {
 
     const valid = stockData[0] !== undefined;
    
@@ -19,7 +19,7 @@ const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, ha
     if(valid){
         headers = Object.keys(stockData[0])
         .map(headerName => 
-            { return { headerName: headerName.charAt(0).toUpperCase() + headerName.slice(1), field: headerName, sortable: true, filter: true } })
+            { return { headerName: headerName.charAt(0).toUpperCase() + headerName.slice(1), field: headerName, sortable: colSize > 150 ? true : false, filter: colSize > 150 ? true : false, width: colSize } })
             
     }
    
@@ -45,7 +45,7 @@ const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, ha
 
             <MDBAnimation type="bounce" duration="0.8s">
                 <div className={className}>
-                    <AgGridReact columnDefs={headers} onRowClicked={(row) => onClick(row.data.symbol)} rowData={valid ? stockData : []} pagination={true} paginationPageSize={20} />
+                    <AgGridReact columnDefs={headers} onRowClicked={(row) => onClick(row.data.symbol)} rowData={valid ? stockData : []} pagination={colSize > 150 ? true : false} paginationPageSize={20} />
                 </div>
             </MDBAnimation>
         </div>

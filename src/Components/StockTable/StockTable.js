@@ -106,7 +106,7 @@ const StockTable = ({user}) => {
 
       : display = data.length > 1 ? 
       <Stocks showFilter stockData={stockData} handleChange={handleChange} handleChangeClient={handleChangeClient} 
-      handleSelect={handleSelect} onClick={handleClick} className={"ag-theme-alpine-dark stocks"} />
+      handleSelect={handleSelect} onClick={handleClick} className={"ag-theme-alpine-dark stocks" } colSize={196} />
       : <Stock chartData={chart.dataLine} data={data} user={user} onClick={handleReturn} onSearch={handleSearch} />
   }
 

@@ -1,5 +1,6 @@
 .lable:hover{
-    background-color: grey;
+    color: black;
+    background-color:black;
 }
 
 .stock{
@@ -9,8 +10,21 @@
     background-color: rgba(5, 0, 0, 0.897);
 }
 
+.lable{
+    margin: auto;
+    width: 81%;
+}
+
+.lable p{
+    display: inline;
+}
+
 .stock h3{
     color: white;
+    border: 2px solid green;
+    background-color: black;
+    width: 100%;
+    margin: auto;
 }
 
 .chart{

@@ -4,9 +4,20 @@
     height: 580px;
 }
 
+.ag-header-cell-label {
+    justify-content: center;
+ }
+
 .stocks-page{
     min-height: 100%;
     padding: 5rem;
+}
+
+.stocks-single{
+    margin: auto;
+    margin-top: -5rem;
+    width: 800px;
+    height: 100px;
 }
 
 .stocks-stock{

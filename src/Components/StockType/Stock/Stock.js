@@ -17,10 +17,10 @@ const Stock = ({ data, chartData, user, onClick, onSearch }) => {
         <div className="stock-page">
             <MDBAnimation type="slideInDown" duration="0.5s">
                 <div className="stock">
-                    {dataParse.name ? <MDBBadge className="badge" color="blue-gradient"><h3>{dataParse.name.toUpperCase()} ( {dataParse.symbol.toUpperCase()} )</h3></MDBBadge> : null}
+                    {dataParse.name ? <MDBBadge className="badge" color="blue-gradient"><h2>{dataParse.name.toUpperCase()} ( {dataParse.symbol.toUpperCase()} )</h2></MDBBadge> : null}
                     {isAuth ? <DatePicker onSearch={onSearch} /> :
-                        <MDBAlert color="success">
-                            You haven't login. Click <Link to="/login">here</Link> to login.
+                        <MDBAlert color="success" className="lable">
+                            You haven't login. Click <Link to="/login"><p>HERE</p></Link> to login.
                         </MDBAlert>}
                     {chartData ?
                         <div className="stock-table">
@@ -28,30 +28,13 @@ const Stock = ({ data, chartData, user, onClick, onSearch }) => {
                                 stockData={chartData.map(data => { return { timestamp: new Date(data.timestamp).toDateString(), open: data.open, high: data.high, low: data.low, close: data.close, volumes: data.volumes } })} />
                         </div>
                         :
-                        <Table celled inverted selectable>
-                            <Table.Header>
-                                <Table.Row>
-                                    {Object.keys(data).map((headers) => <Table.HeaderCell key={uuidv4()}>
-                                        {headers.charAt(0).toUpperCase() + headers.slice(1)}</Table.HeaderCell>)}
-                                </Table.Row>
-                            </Table.Header>
-
-                            <Table.Body>
-                                <Table.Row>
-                                    {Object.values(dataParse).map((values) =>
-                                        <Table.Cell className="lable" key={uuidv4()}>
-                                                {values}
-                                        </Table.Cell>)}
-                                </Table.Row>
-                            </Table.Body>
-                        </Table>}
+                        <Stocks onClick={() => void 0} className={"ag-theme-alpine-dark stocks-single"} colSize={135}
+                            stockData={[dataParse].map((data) => { return { date: data.timestamp, open: data.open, high: data.high, low: data.low, close: data.close, volumes: data.volumes } })} />}
                     <div className="chart">
                         {chartData ? <Chart chartData={chartData} /> : null}
                     </div>
                     <MDBAnimation type="fadeIn" delay="0.5s">
-                        <div style={{ marginTop: "3.5rem" }}>
-                            <MDBBtn gradient="morpheus-den" onClick={onClick}>RETURN</MDBBtn>
-                        </div>
+                        <MDBBtn gradient="morpheus-den" onClick={onClick}>RETURN</MDBBtn>
                     </MDBAnimation>
                 </div>
             </MDBAnimation>
