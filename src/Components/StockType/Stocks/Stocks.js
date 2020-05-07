@@ -1,7 +1,8 @@
 import React from 'react'
 import { AgGridReact } from 'ag-grid-react'
 import "ag-grid-community/dist/styles/ag-grid.css"
-import "ag-grid-community/dist/styles/ag-theme-balham.css"
+import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css"
+
 import './Stocks.css'
 import { MDBAnimation, MDBCol, MDBIcon, MDBRow } from "mdbreact";
 import SelectBar from '../../SelectBar/SelectBar'
@@ -45,7 +46,7 @@ const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, ha
            }
 
             <MDBAnimation type="bounce" duration="0.8s">
-                <div className="ag-theme-balham stocks">
+                <div className="ag-theme-alpine-dark stocks">
                     <AgGridReact columnDefs={headers} onRowClicked={(row) => onClick(row.data.symbol)} rowData={valid ? stockData : []} pagination={true} paginationPageSize={20} />
                 </div>
             </MDBAnimation>
