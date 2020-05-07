@@ -2,7 +2,7 @@ import React from "react";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 
-const Chart = ({chartData}) => {
+const Chart = ({ chartData }) => {
 
   const chart = {
     dataLine: {
@@ -13,7 +13,7 @@ const Chart = ({chartData}) => {
           fill: true,
           lineTension: 0.3,
           backgroundColor: "rgba(225, 204,230, .3)",
-          borderColor: "lightblue",
+          borderColor: "blue",
           borderCapStyle: "butt",
           borderDash: [],
           borderDashOffset: 0.0,
@@ -36,8 +36,10 @@ const Chart = ({chartData}) => {
 
   return (
     <MDBContainer>
-      <h3 className="mt-5">Line chart</h3>
-      <Line data={chart.dataLine} options={{ responsive: true }} />
+      <div style={{background: "rgba(255, 255, 255, 0.938)"}}>
+        <h3 className="mt-5">Line chart</h3>
+        <Line data={chart.dataLine} options={{ responsive: true }} />
+      </div>
     </MDBContainer>
   );
 }

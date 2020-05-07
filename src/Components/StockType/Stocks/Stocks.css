@@ -9,10 +9,18 @@
     padding: 5rem;
 }
 
+.stocks-stock{
+    margin: auto;
+    margin-top: -5rem;
+    width: 800px;
+    height: 300px;
+}
+
 input[type=text] {
     box-sizing: border-box;
     background-color: black;
     border: 1px solid green;
+    color: white;
  }
 
 .dropDM{

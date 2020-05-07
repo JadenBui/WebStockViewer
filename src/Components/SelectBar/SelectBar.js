@@ -1,4 +1,5 @@
 import React from 'react'
+import './SelectBar.css'
 
 const SelectBar = ({onSelect}) => {
   return (
@@ -17,7 +18,6 @@ const SelectBar = ({onSelect}) => {
       <option value="real estate">Real Estate</option>
       <option value="telecommunication services">Telecommunication Services</option>
       <option value="utilities">Utilities</option>
-      
     </select>
   </div>
   );

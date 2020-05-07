@@ -4,10 +4,10 @@ import "ag-grid-community/dist/styles/ag-grid.css"
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css"
 
 import './Stocks.css'
-import { MDBAnimation, MDBCol, MDBIcon, MDBRow } from "mdbreact";
+import { MDBAnimation, MDBCol, MDBRow } from "mdbreact";
 import SelectBar from '../../SelectBar/SelectBar'
 
-const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, handleChangeClient }) => {
+const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, handleChangeClient, className }) => {
 
     const valid = stockData[0] !== undefined;
    
@@ -29,13 +29,11 @@ const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, ha
                showFilter ?  <MDBRow center>
                 <MDBCol md="auto" middle >
                     <form className="form-inline mt-4 mb-4">
-                        <MDBIcon icon="search" />
                         <input onChange={handleChangeClient} className="form-control form-control-sm ml-3 w-75" type="text" placeholder="SearchByName" aria-label="Search" />
                     </form>
                 </MDBCol>
                 <MDBCol md="auto" middle >
                     <form className="form-inline mt-4 mb-4">
-                        <MDBIcon icon="search" />
                         <input onChange={handleChange} className="form-control form-control-sm ml-3 w-75" type="text" placeholder="SearchByIndustry" aria-label="Search" />
                     </form>
                 </MDBCol>
@@ -46,7 +44,7 @@ const Stocks = ({ stockData, onClick, handleChange, handleSelect, showFilter, ha
            }
 
             <MDBAnimation type="bounce" duration="0.8s">
-                <div className="ag-theme-alpine-dark stocks">
+                <div className={className}>
                     <AgGridReact columnDefs={headers} onRowClicked={(row) => onClick(row.data.symbol)} rowData={valid ? stockData : []} pagination={true} paginationPageSize={20} />
                 </div>
             </MDBAnimation>

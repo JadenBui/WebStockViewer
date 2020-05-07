@@ -17,18 +17,18 @@ const Stock = ({ data, chartData, user, onClick, onSearch }) => {
         <div className="stock-page">
             <MDBAnimation type="slideInDown" duration="0.5s">
                 <div className="stock">
-                    {dataParse.name ? <MDBBadge className="badge" color="morpheus-den-gradient"><h3>{dataParse.name.toUpperCase()} ( {dataParse.symbol.toUpperCase()} )</h3></MDBBadge> : null}
+                    {dataParse.name ? <MDBBadge className="badge" color="blue-gradient"><h3>{dataParse.name.toUpperCase()} ( {dataParse.symbol.toUpperCase()} )</h3></MDBBadge> : null}
                     {isAuth ? <DatePicker onSearch={onSearch} /> :
                         <MDBAlert color="success">
                             You haven't login. Click <Link to="/login">here</Link> to login.
                         </MDBAlert>}
                     {chartData ?
                         <div className="stock-table">
-                            <Stocks onClick={(e) => console.log(e)}
+                            <Stocks onClick={() => void 0} className={"ag-theme-alpine-dark stocks-stock"}
                                 stockData={chartData.map(data => { return { timestamp: new Date(data.timestamp).toDateString(), open: data.open, high: data.high, low: data.low, close: data.close, volumes: data.volumes } })} />
                         </div>
                         :
-                        <Table celled >
+                        <Table celled inverted selectable>
                             <Table.Header>
                                 <Table.Row>
                                     {Object.keys(data).map((headers) => <Table.HeaderCell key={uuidv4()}>
@@ -40,7 +40,7 @@ const Stock = ({ data, chartData, user, onClick, onSearch }) => {
                                 <Table.Row>
                                     {Object.values(dataParse).map((values) =>
                                         <Table.Cell className="lable" key={uuidv4()}>
-                                            <Label>{values}</Label>
+                                                {values}
                                         </Table.Cell>)}
                                 </Table.Row>
                             </Table.Body>

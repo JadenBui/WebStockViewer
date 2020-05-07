@@ -9,8 +9,12 @@
     background-color: rgba(5, 0, 0, 0.897);
 }
 
+.stock h3{
+    color: white;
+}
+
 .chart{
-   color: wheat;
+   color: black;
 }
 
 .badge{
