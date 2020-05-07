@@ -9,6 +9,12 @@
     padding: 5rem;
 }
 
+input[type=text] {
+    box-sizing: border-box;
+    background-color: black;
+    border: 1px solid green;
+ }
+
 .dropDM{
     background: black !important;
 }
