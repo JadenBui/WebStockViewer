@@ -17,17 +17,17 @@ const Stock = ({ data, chartData, user, onClick, onSearch }) => {
         <div className="stock-page">
             <MDBAnimation type="slideInDown" duration="0.5s">
                 <div className="stock">
-                    {dataParse.name ?  <MDBBadge className="badge" color="morpheus-den-gradient"><h3>{dataParse.name.toUpperCase()} ( {dataParse.symbol.toUpperCase()} )</h3></MDBBadge>: null}
+                    {dataParse.name ? <MDBBadge className="badge" color="morpheus-den-gradient"><h3>{dataParse.name.toUpperCase()} ( {dataParse.symbol.toUpperCase()} )</h3></MDBBadge> : null}
                     {isAuth ? <DatePicker onSearch={onSearch} /> :
                         <MDBAlert color="success">
                             You haven't login. Click <Link to="/login">here</Link> to login.
                         </MDBAlert>}
-                    {chartData ? 
+                    {chartData ?
                         <div className="stock-table">
-                                <Stocks onClick={(e)=>console.log(e)} 
-                                    stockData={chartData.map(data => {return {timestamp:new Date(data.timestamp).toDateString(),open:data.open,high:data.high,low:data.low,close:data.close,volumes:data.volumes}})} />
+                            <Stocks onClick={(e) => console.log(e)}
+                                stockData={chartData.map(data => { return { timestamp: new Date(data.timestamp).toDateString(), open: data.open, high: data.high, low: data.low, close: data.close, volumes: data.volumes } })} />
                         </div>
-                        : 
+                        :
                         <Table celled >
                             <Table.Header>
                                 <Table.Row>
@@ -48,14 +48,15 @@ const Stock = ({ data, chartData, user, onClick, onSearch }) => {
                     <div className="chart">
                         {chartData ? <Chart chartData={chartData} /> : null}
                     </div>
+                    <MDBAnimation type="fadeIn" delay="0.5s">
+                        <div style={{ marginTop: "3.5rem" }}>
+                            <MDBBtn gradient="morpheus-den" onClick={onClick}>RETURN</MDBBtn>
+                        </div>
+                    </MDBAnimation>
                 </div>
             </MDBAnimation>
 
-            <MDBAnimation type="fadeIn" delay="0.5s">
-                <div style={{ marginTop: "1rem" }}>
-                    <MDBBtn gradient="morpheus-den" onClick={onClick}>RETURN</MDBBtn>
-                </div>
-            </MDBAnimation>
+
         </div>
     )
 }
