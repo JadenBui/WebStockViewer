@@ -52,10 +52,11 @@ const App = () => {
       const data = await axios.post('http://131.181.190.87:3000/user/login', newUser)
       const parsedData = data.data;
       
-      setResponse({ ...response, auth: true });
       localStorage.setItem('name', user.name);
       localStorage.setItem('email', user.email);
       localStorage.setItem('token', parsedData.token);
+      
+      setResponse({ ...response, auth: true });
       
     } catch (e) {
       setError(e.response.data);
