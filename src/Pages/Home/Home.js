@@ -60,7 +60,7 @@ const Home = () => {
                       </p>
                       <MDBBtn color='blue'>
                         <MDBIcon icon='clone left' /> See More
-              </MDBBtn>
+                      </MDBBtn>
                     </div>
                   </div>
                 </MDBCard>
@@ -89,7 +89,7 @@ const Home = () => {
                       </p>
                       <MDBBtn color='blue'>
                         <MDBIcon icon='clone left' /> See More
-              </MDBBtn>
+                      </MDBBtn>
                     </div>
                   </div>
                 </MDBCard>
@@ -118,7 +118,7 @@ const Home = () => {
                       </p>
                       <MDBBtn color='blue'>
                         <MDBIcon icon='clone left' /> See More
-              </MDBBtn>
+                      </MDBBtn>
                     </div>
                   </div>
                 </MDBCard>
@@ -151,12 +151,12 @@ const Home = () => {
               </MDBRow>
             </div>
           </MDBAnimation>
-          <MDBCarousel className="carousel"
+          <MDBCarousel
             activeItem={1}
             length={3}
             showControls={true}
             showIndicators={true}
-            className="z-depth-1"
+            className="z-depth-1 carousel"
           >
             <MDBCarouselInner>
               <MDBCarouselItem itemId="1">
