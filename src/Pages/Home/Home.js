@@ -46,18 +46,18 @@ const Home = () => {
                     backgroundImage:
                       "url('https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg')"
                   }}
-                >
+                   >
                   <div className='text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4'>
                     <div>
                       <h5 className='blue-text'>
                         <MDBIcon icon='desktop' /> Software
-              </h5>
+                      </h5>
                       <MDBCardTitle tag='h3' className='pt-2'>
                         <strong>Build with the latest technology</strong>
                       </MDBCardTitle>
                       <p>
                         By using the MEAN stack, I've produced a dynamic website
-              </p>
+                      </p>
                       <MDBBtn color='blue'>
                         <MDBIcon icon='clone left' /> See More
               </MDBBtn>
@@ -75,18 +75,18 @@ const Home = () => {
                     backgroundImage:
                       "url('https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg')"
                   }}
-                >
+                  >
                   <div className='text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4'>
                     <div>
                       <h5 className='blue-text'>
                         <MDBIcon icon='check-circle' /> Use With Ease
-              </h5>
+                      </h5>
                       <MDBCardTitle tag='h3' className='pt-2'>
                         <strong>Modest Design For Simplicity</strong>
                       </MDBCardTitle>
                       <p>
                         Navigate through the website couldn't be more simple with us
-              </p>
+                      </p>
                       <MDBBtn color='blue'>
                         <MDBIcon icon='clone left' /> See More
               </MDBBtn>
@@ -104,18 +104,18 @@ const Home = () => {
                     backgroundImage:
                       "url('https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg')"
                   }}
-                >
+                  >
                   <div className='text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4'>
                     <div>
                       <h5 className='blue-text'>
                         <MDBIcon icon='shield-alt' /> Secure
-              </h5>
+                      </h5>
                       <MDBCardTitle tag='h3' className='pt-2'>
                         <strong>Leading Encryption Industry</strong>
                       </MDBCardTitle>
                       <p>
                         All of the sensitive information is encrypted totally secure
-              </p>
+                      </p>
                       <MDBBtn color='blue'>
                         <MDBIcon icon='clone left' /> See More
               </MDBBtn>
@@ -138,7 +138,7 @@ const Home = () => {
                       <h5 className="indigo-text"><strong>Stocks Website</strong></h5>
                       <MDBCardText>
                         We aim to be the top noch on website about stocks
-                  </MDBCardText>
+                      </MDBCardText>
                       <a href="#!" className="icons-sm li-ic ml-1">
                         <MDBIcon fab icon="linkedin-in" /></a>
                       <a href="#!" className="icons-sm tw-ic ml-1">
@@ -151,7 +151,7 @@ const Home = () => {
               </MDBRow>
             </div>
           </MDBAnimation>
-          <MDBCarousel style={{ width: "90rem", margin: "3rem auto auto auto" }}
+          <MDBCarousel className="carousel"
             activeItem={1}
             length={3}
             showControls={true}

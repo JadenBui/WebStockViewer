@@ -4,6 +4,12 @@
 }
 
 
+.carousel{
+    width: 70rem;
+    height: 40rem;
+    margin: 3rem auto auto auto;
+}
+
 .home{
     background-image: url("https://supplychainbeyond.com/wp-content/uploads/2018/10/chain-of-custody-solutions-in-supply-chain-management-1920x1080.jpg");
     margin-top: -5rem;
