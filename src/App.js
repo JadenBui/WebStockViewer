@@ -59,8 +59,13 @@ const App = () => {
       setResponse({ ...response, auth: true });
       
     } catch (e) {
+      const errorMessage = e.response.data.message;
       setError(e.response.data);
-      clearUser();
+      if(errorMessage.includes('email')){
+         clearUser();
+      }else{
+         setUser({...user,password:""}); 
+      }
     }
   }
 
