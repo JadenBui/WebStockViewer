@@ -16,7 +16,7 @@ const StockTable = ({user}) => {
   useEffect(()=>{
     setData(data);
   },[data])
-
+ 
   let display =
     <BackDrop show>
       <div className="spinner-grow text-primary" role="status">
