@@ -4,7 +4,6 @@ import "../Stocks/Stocks.css";
 import { MDBBtn, MDBAnimation, MDBAlert, MDBBadge } from "mdbreact";
 import DateSelector from "../../DateSelector/DateSelector";
 import Chart from "../../Chart/Chart";
-import Stocks from "../Stocks/Stocks";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ApiGetter from "../../../Api/ApiGetter";
@@ -15,15 +14,20 @@ import Table from "../../Table/Table";
 const SingleStock = ({ onSearch, user, match }) => {
   const symbol = match.match.params.symbol;
   const [data, loading, error] = ApiGetter(symbol);
-  const [stock, setStock] = useState({ data: null, err: true });
+  const [stock, setStock] = useState(null);
+  const [err,setErr] = useState({show:false,message:""});
   const [chartData, setChart] = useState({ dataLine: null });
 
+  useEffect(() => {
+    setStock(data);
+  }, [data]);
+
   const dataParse = {
-    ...stock.data,
+    ...stock,
     timestamp: new Date(data.timestamp).toLocaleDateString(),
   };
-  //const isAuth = user.email !== "";
-  const isAuth = true;
+
+  const isAuth = user.email !== "";
 
   const handleSearch = async (date) => {
     const token = localStorage.getItem("token");
@@ -36,15 +40,12 @@ const SingleStock = ({ onSearch, user, match }) => {
       const chartData = data.data;
       setChart({ dataLine: chartData });
     } catch (e) {
-      console.log(e.message);
+      setErr({show:true,message:"Sorry, we haven't got data for this time"});
     }
   };
 
-  useEffect(() => {
-    setStock({ ...stock, data: data });
-  }, [data]);
-
-  const confirmHandler = () => setStock({ ...data, err: false });
+  
+  const confirmHandler = () => setErr({show:false,message:""});
 
   if (loading) {
     return (
@@ -57,11 +58,12 @@ const SingleStock = ({ onSearch, user, match }) => {
   }
 
   if (error) {
-    return <ErrorHandler show={stock.err} clickHandler={confirmHandler} />;
+    setErr({show:true,message:"Could not connect to the server"});
   }
 
   return (
     <div className="stock-page">
+      <ErrorHandler error={err.show} confirmHandler={confirmHandler} message={err.message}/>
       <MDBAnimation type="slideInDown" duration="0.5s">
         <div className="stock">
           {dataParse.name ? (
@@ -92,7 +94,7 @@ const SingleStock = ({ onSearch, user, match }) => {
                 colSize={135}
                 stockData={chartData.dataLine.map((data) => {
                   return {
-                    timestamp: new Date(data.timestamp).toDateString(),
+                    timestamp: new Date(data.timestamp).toLocaleDateString(),
                     open: data.open,
                     high: data.high,
                     low: data.low,

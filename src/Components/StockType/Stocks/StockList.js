@@ -7,7 +7,7 @@ import BackDrop from '../../../Hox/BackDrop/BackDrop'
 import { MDBAnimation, MDBCol, MDBRow } from "mdbreact";
 import SelectBar from '../../SelectBar/SelectBar'
 import '../Stocks/Stocks.css'
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { MDBCard, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon } from "mdbreact";
 
 
@@ -15,53 +15,53 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon } from "mdbreact";
 
 const StockList = () => {
   const [data, loading, error] = ApiGetter("symbols");
-  const [stockList, setStockList] = useState({ data: null, err: true });
+  const [stockList, setStockList] = useState(null);
+  const [err, setErr] = useState({show:false,message:""});
   const history = useHistory();
   useEffect(() => {
-    setStockList({ ...stockList, data: data });
+    setStockList(data);
   }, [data]);
 
   const onClick = (symbol) =>{
-      console.log(symbol)
-      history.push(`/stock/${symbol}`);
+      history.push(`/stocklist/stock/${symbol}`);
   }
 
   const handleChange = async (e) => {
-    if (e.target.value === "") return setStockList({...stockList,data:data});
+    if (e.target.value === "") return setStockList(data);
     try {
       const response = await axios.get(
         `http://131.181.190.87:3000/stocks/symbols?industry=${e.target.value}`
       );
-      setStockList({...stockList,data:response.data});
+      setStockList(response.data);
     } catch (e) {
-      setStockList({...stockList,data:[]});
+      setStockList([]);
     }
   };
 
   const handleChangeClient = (e) => {
-    const filterdData = data.filter(
+    const filteredData = data.filter(
       (data) =>
         data.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
     );
-    setStockList({...stockList,data:filterdData});
+    setStockList(filteredData);
   };
 
   const handleSelect = async (e) => {
     if (e.target[e.target.selectedIndex].value === "all") {
-      return setStockList({...stockList,data:data});
+      return setStockList(data);
     }
     try {
       const query = e.target[e.target.selectedIndex].value.replace(" ", "%20");
       const response = await axios.get(
         `http://131.181.190.87:3000/stocks/symbols?industry=${query}`
       );
-      setStockList({...stockList,data:response.data});
+      setStockList(response.data);
     } catch (e) {
-      console.log(e.message);
+      setErr({show:true,message:"Cannot select"});
     }
   };
 
-  const confirmHandler = () => setStockList({ ...data, err: false });
+  const confirmHandler = () => setErr({show:false,message:""});
 
   if (loading) {
     return (
@@ -76,7 +76,6 @@ const StockList = () => {
   if (error) {
     return (
     <div>
-        <ErrorHandler error={stockList.err} confirmHandler={confirmHandler} />
         <div className="errorDisplay">
           <MDBCard className="card-body">
             <MDBCardTitle>An Error Have Occured</MDBCardTitle>
@@ -94,6 +93,7 @@ const StockList = () => {
 
   return (
     <div className="stocks-page">
+      <ErrorHandler error={err.show} confirmHandler={confirmHandler} message={err.message} />
       <MDBAnimation type="fadeInDown" duration="0.8s">
       <MDBRow center>
         <MDBCol md="auto" middle>
@@ -123,7 +123,7 @@ const StockList = () => {
         </MDBCol>
       </MDBRow>
       </MDBAnimation>
-      <Table stockData={stockList.data} onClick={onClick} className={"ag-theme-alpine-dark stocks"} colSize={196} />
+      <Table stockData={stockList} onClick={onClick} className={"ag-theme-alpine-dark stocks"} colSize={196} />
     </div>
   );
 };

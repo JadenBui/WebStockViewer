@@ -110,9 +110,9 @@ const App = () => {
                 user={user}
               />
             </Route>
-            <Route path="/stocks" render={()=><StockTable user={user} />}/>
-            <Route path="/stocklist" render={()=><StockList/>}/>
-            <Route path="/stock/:symbol" render={(match)=><SingleStock match={match} user={user}/>}/>
+            {/* <Route path="/stocks" render={()=><StockTable user={user} />}/> */}
+            <Route path="/stocklist" exact render={()=><StockList/>}/>
+            <Route path="/stocklist/stock/:symbol" render={(match)=><SingleStock match={match} user={user}/>}/>
             <Route path="/home" render={()=><Home/>}/>
             <Route path="/login" render={()=><Login onSubmit={handleLogin}
                 handleEmail={handleEmail}

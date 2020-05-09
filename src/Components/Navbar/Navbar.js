@@ -34,7 +34,7 @@ const ToolBar = ({ auth, handleLogOut }) => {
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="/stocks">
+              <MDBNavLink to="/stocklist">
                 Stocks
               </MDBNavLink>
             </MDBNavItem>

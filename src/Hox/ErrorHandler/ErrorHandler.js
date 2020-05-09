@@ -1,15 +1,17 @@
-import React from 'react'
-import BackDrop from '../BackDrop/BackDrop'
-import './ErrorHandler.css'
-const ErrorHandler = (props) => {
-        return (
-            <div>
-                <BackDrop show={props.error} clickHandler = {props.confirmHandler}>
-                    <h1 className="alert-danger message">There's something wrong with API requests: {props.error? props.error.message : null}</h1>
-                </BackDrop>
-                {props.children}
-            </div>
-        );
-    }
+import React from "react";
+import BackDrop from "../BackDrop/BackDrop";
+import "./ErrorHandler.css";
+const ErrorHandler = ({error,message,confirmHandler}) => {
+  return (
+    <div>
+      <BackDrop show={error} clickHandler={confirmHandler}>
+        <h1 className="alert-danger message">
+          There's something wrong with API requests:{" "}
+          {message}
+        </h1>
+      </BackDrop>
+    </div>
+  );
+};
 
 export default ErrorHandler;
