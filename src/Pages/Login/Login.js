@@ -4,7 +4,7 @@ import './Login.css'
 import { Redirect } from 'react-router-dom';
 const Login = ({ onSubmit, handleEmail, handlePassword, auth, user }) => {
     
-    if (auth || localStorage.getItem('token') != null) {
+    if (auth) {
         return <Redirect to="/stocklist" />
     }
 

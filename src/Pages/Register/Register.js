@@ -3,9 +3,9 @@ import './Register.css'
 import { MDBAnimation } from "mdbreact";
 import { Redirect } from 'react-router-dom';
 
-const Register = ({ onSubmit, handleName, handleEmail, handlePassword, register, user }) => {
+const Register = ({ onSubmit, handleName, handleEmail, handlePassword, register, user, auth }) => {
 
-  if (register || localStorage.getItem('token') != null) {
+  if (auth || register) {
     return <Redirect to="/login" />
   }
 

@@ -11,7 +11,7 @@ import BackDrop from "../../../Hox/BackDrop/BackDrop";
 import ErrorHandler from "../../../Hox/ErrorHandler/ErrorHandler";
 import Table from "../../Table/Table";
 
-const SingleStock = ({ onSearch, user, match }) => {
+const SingleStock = ({ auth, match }) => {
   const symbol = match.match.params.symbol;
   const [data, loading, error] = ApiGetter(symbol);
   const [stock, setStock] = useState(null);
@@ -27,7 +27,7 @@ const SingleStock = ({ onSearch, user, match }) => {
     timestamp: new Date(data.timestamp).toLocaleDateString(),
   };
 
-  const isAuth = user.email !== "";
+  const isAuth = auth;
 
   const handleSearch = async (date) => {
     const token = localStorage.getItem("token");

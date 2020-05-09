@@ -58,6 +58,8 @@ const App = () => {
       localStorage.setItem('token', parsedData.token);
       
       setResponse({ ...response, auth: true });
+
+      clearUser();
       
     } catch (e) {
       const errorMessage = e.response.data.message;
@@ -107,12 +109,13 @@ const App = () => {
                 handlePassword={handlePassword}
                 handleName={handleName}
                 register={response.register}
+                auth={response.auth}
                 user={user}
               />
             </Route>
             {/* <Route path="/stocks" render={()=><StockTable user={user} />}/> */}
             <Route path="/stocklist" exact render={()=><StockList/>}/>
-            <Route path="/stocklist/stock/:symbol" render={(match)=><SingleStock match={match} user={user}/>}/>
+            <Route path="/stocklist/stock/:symbol" render={(match)=><SingleStock match={match} auth={response.auth}/>}/>
             <Route path="/home" render={()=><Home/>}/>
             <Route path="/login" render={()=><Login onSubmit={handleLogin}
                 handleEmail={handleEmail}
