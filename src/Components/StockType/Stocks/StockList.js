@@ -8,6 +8,8 @@ import { MDBAnimation, MDBCol, MDBRow } from "mdbreact";
 import SelectBar from '../../SelectBar/SelectBar'
 import '../Stocks/Stocks.css'
 import { Redirect, useHistory } from "react-router-dom";
+import { MDBCard, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon } from "mdbreact";
+
 
 
 
@@ -72,11 +74,27 @@ const StockList = () => {
   }
 
   if (error) {
-    return <ErrorHandler show={stockList.err} clickHandler={confirmHandler} />;
+    return (
+    <div>
+        <ErrorHandler error={stockList.err} confirmHandler={confirmHandler} />
+        <div className="errorDisplay">
+          <MDBCard className="card-body">
+            <MDBCardTitle>An Error Have Occured</MDBCardTitle>
+            <MDBCardText>Please try again</MDBCardText>
+            <MDBBtn
+              gradient="young-passion"
+              style={{ width: "20%", margin: "auto" }}
+            >
+              <MDBIcon icon="undo" />
+            </MDBBtn>
+          </MDBCard>
+        </div>
+    </div>);
   }
 
   return (
     <div className="stocks-page">
+      <MDBAnimation type="fadeInDown" duration="0.8s">
       <MDBRow center>
         <MDBCol md="auto" middle>
           <form className="form-inline mt-4 mb-4">
@@ -104,9 +122,8 @@ const StockList = () => {
           <SelectBar onSelect={handleSelect} />
         </MDBCol>
       </MDBRow>
-      <MDBAnimation type="bounce" duration="0.8s">
-      <Table stockData={stockList.data} onClick={onClick} className={"ag-theme-alpine-dark stocks"} colSize={196} />
       </MDBAnimation>
+      <Table stockData={stockList.data} onClick={onClick} className={"ag-theme-alpine-dark stocks"} colSize={196} />
     </div>
   );
 };

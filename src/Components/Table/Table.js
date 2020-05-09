@@ -3,6 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import '../StockType/Stocks/Stocks.css'
+import {MDBAnimation} from 'mdbreact'
 
 const Table = ({ stockData, className, colSize, onClick }) => {
   const valid = stockData[0] !== undefined;
@@ -27,6 +28,7 @@ const Table = ({ stockData, className, colSize, onClick }) => {
   }
 
   return (
+    <MDBAnimation type="bounce" duration="0.8s">
     <div className={className}>
       <AgGridReact
         columnDefs={headers}
@@ -36,6 +38,7 @@ const Table = ({ stockData, className, colSize, onClick }) => {
         paginationPageSize={20}
       />
     </div>
+    </MDBAnimation>
   );
 };
 

@@ -20,7 +20,7 @@ const SingleStock = ({ onSearch, user, match }) => {
 
   const dataParse = {
     ...stock.data,
-    timestamp: new Date(data.timestamp).toDateString(),
+    timestamp: new Date(data.timestamp).toLocaleDateString(),
   };
   //const isAuth = user.email !== "";
   const isAuth = true;
@@ -84,7 +84,8 @@ const SingleStock = ({ onSearch, user, match }) => {
             </MDBAlert>
           )}
           {chartData.dataLine ? (
-            <div className="stock-table">
+            <div className="stocks-page">
+            <MDBAnimation type="bounce" duration="0.8s">
               <Table
                 onClick={() => void 0}
                 className={"ag-theme-alpine-dark stocks-stock"}
@@ -100,6 +101,7 @@ const SingleStock = ({ onSearch, user, match }) => {
                   };
                 })}
               />
+              </MDBAnimation>
             </div>
           ) : (
             <div className="stocks-page">

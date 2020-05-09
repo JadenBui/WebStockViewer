@@ -1,12 +1,11 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import { MDBContainer } from "mdbreact";
+import { MDBContainer, MDBAnimation } from "mdbreact";
 
 const Chart = ({ chartData }) => {
-
   const chart = {
     dataLine: {
-      labels: chartData.map(data => new Date(data.timestamp).toDateString()),
+      labels: chartData.map((data) => new Date(data.timestamp).toLocaleDateString()),
       datasets: [
         {
           label: "Close Data",
@@ -27,23 +26,22 @@ const Chart = ({ chartData }) => {
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: chartData.map(data => data.close)
-        }
-      ]
-    }
-  }
-
+          data: chartData.map((data) => data.close),
+        },
+      ],
+    },
+  };
 
   return (
     <MDBContainer>
-      <div style={{background: "rgba(255, 255, 255, 0.938)"}}>
-        <h3 className="mt-5">Line chart</h3>
-        <Line data={chart.dataLine} options={{ responsive: true }} />
-      </div>
+      <MDBAnimation type="fadeInUp" duration="2s">
+        <div style={{ background: "rgba(255, 255, 255, 0.938)" }}>
+          <h3 className="mt-5">Line chart</h3>
+          <Line data={chart.dataLine} options={{ responsive: true }} />
+        </div>
+      </MDBAnimation>
     </MDBContainer>
   );
-}
-
-
+};
 
 export default Chart;
