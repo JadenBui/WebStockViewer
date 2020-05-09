@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import BackDrop from '../BackDrop/BackDrop'
 import './ErrorHandler.css'
-import AxiosErrorHandler from '../AxiosErrorHandler/AxiosErrorHandler'
-const ErrorHandler = (ChildComponent) => {
-    return (props) => {
-        const [error, clearError] = AxiosErrorHandler();
+const ErrorHandler = (props) => {
         return (
             <div>
-                <BackDrop show={error} clickHandler = {clearError}>
-                    <h1 className="alert-danger message">There's something wrong with API requests: {error? error.message : null}</h1>
+                <BackDrop show={props.error} clickHandler = {props.clearError}>
+                    <h1 className="alert-danger message">There's something wrong with API requests: {props.error? props.error.message : null}</h1>
                 </BackDrop>
-                <ChildComponent {...props} />
+                {props.children}
             </div>
         );
     }
-}
 
 export default ErrorHandler;

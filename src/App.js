@@ -10,7 +10,8 @@ import LogOut from './Pages/LogOut/LogOut'
 import axios from 'axios'
 import BackDrop from './Hox/BackDrop/BackDrop'
 import { MDBBadge } from 'mdbreact'
-
+import StockList from './Components/StockType/Stocks/StockList'
+import SingleStock from './Components/StockType/Stock/SingleStock'
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const App = () => {
@@ -109,16 +110,17 @@ const App = () => {
                 user={user}
               />
             </Route>
-            <Route path="/stocks"><StockTable user={user} /></Route>
-            <Route path="/home"><Home /></Route>
-            <Route path="/login">
-              <Login onSubmit={handleLogin}
+            <Route path="/stocks" render={()=><StockTable user={user} />}/>
+            <Route path="/stocklist" render={()=><StockList/>}/>
+            <Route path="/stock/:symbol" render={(match)=><SingleStock match={match} user={user}/>}/>
+            <Route path="/home" render={()=><Home/>}/>
+            <Route path="/login" render={()=><Login onSubmit={handleLogin}
                 handleEmail={handleEmail}
                 handlePassword={handlePassword}
                 auth={response.auth}
-                user={user} />
+                user={user} />}>
             </Route>
-            <Route path="/logout"><LogOut /></Route>
+            <Route path="/logout" render={()=>LogOut}/>
           </Switch>
         </Layout>
       </Router>

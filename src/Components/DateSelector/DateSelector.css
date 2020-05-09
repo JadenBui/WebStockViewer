@@ -10,3 +10,15 @@
 .search{
     margin: 0;
 }
+
+.dateSelector input[type=text]:focus{
+    background-color: black;
+    border: 2px solid lightgreen;
+}
+
+.dateSelector input[type=text] {
+    box-sizing: border-box;
+    background-color: black;
+    border: 1px solid green;
+    color: white;
+ }
