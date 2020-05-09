@@ -5,7 +5,9 @@ import { MDBContainer, MDBAnimation } from "mdbreact";
 const Chart = ({ chartData }) => {
   const chart = {
     dataLine: {
-      labels: chartData.map((data) => new Date(data.timestamp).toLocaleDateString()),
+      labels: chartData.map((data) =>
+        new Date(data.timestamp).toLocaleDateString()
+      ),
       datasets: [
         {
           label: "Close Data",

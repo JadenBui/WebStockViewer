@@ -15,7 +15,7 @@ const SingleStock = ({ auth, match }) => {
   const symbol = match.match.params.symbol;
   const [data, loading, error] = ApiGetter(symbol);
   const [stock, setStock] = useState(null);
-  const [err,setErr] = useState({show:false,message:""});
+  const [err, setErr] = useState({ show: false, message: "" });
   const [chartData, setChart] = useState({ dataLine: null });
 
   useEffect(() => {
@@ -40,12 +40,14 @@ const SingleStock = ({ auth, match }) => {
       const chartData = data.data;
       setChart({ dataLine: chartData });
     } catch (e) {
-      setErr({show:true,message:"Sorry, we haven't got data for this time"});
+      setErr({
+        show: true,
+        message: "Sorry, we haven't got data for this time",
+      });
     }
   };
 
-  
-  const confirmHandler = () => setErr({show:false,message:""});
+  const confirmHandler = () => setErr({ show: false, message: "" });
 
   if (loading) {
     return (
@@ -58,12 +60,16 @@ const SingleStock = ({ auth, match }) => {
   }
 
   if (error) {
-    setErr({show:true,message:"Could not connect to the server"});
+    setErr({ show: true, message: "Could not connect to the server" });
   }
 
   return (
     <div className="stock-page">
-      <ErrorHandler error={err.show} confirmHandler={confirmHandler} message={err.message}/>
+      <ErrorHandler
+        error={err.show}
+        confirmHandler={confirmHandler}
+        message={err.message}
+      />
       <MDBAnimation type="slideInDown" duration="0.5s">
         <div className="stock">
           {dataParse.name ? (
@@ -87,22 +93,22 @@ const SingleStock = ({ auth, match }) => {
           )}
           {chartData.dataLine ? (
             <div className="stocks-page">
-            <MDBAnimation type="bounce" duration="0.8s">
-              <Table
-                onClick={() => void 0}
-                className={"ag-theme-alpine-dark stocks-stock"}
-                colSize={135}
-                stockData={chartData.dataLine.map((data) => {
-                  return {
-                    timestamp: new Date(data.timestamp).toLocaleDateString(),
-                    open: data.open,
-                    high: data.high,
-                    low: data.low,
-                    close: data.close,
-                    volumes: data.volumes,
-                  };
-                })}
-              />
+              <MDBAnimation type="bounce" duration="0.8s">
+                <Table
+                  onClick={() => void 0}
+                  className={"ag-theme-alpine-dark stocks-stock"}
+                  colSize={135}
+                  stockData={chartData.dataLine.map((data) => {
+                    return {
+                      timestamp: new Date(data.timestamp).toLocaleDateString(),
+                      open: data.open,
+                      high: data.high,
+                      low: data.low,
+                      close: data.close,
+                      volumes: data.volumes,
+                    };
+                  })}
+                />
               </MDBAnimation>
             </div>
           ) : (
