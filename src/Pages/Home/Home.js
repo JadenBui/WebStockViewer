@@ -20,10 +20,10 @@ const Home = () => {
               <div className="container px-md-3 px-sm-0">
                 <div className="row home-row">
                   <div className="col-md-12 mb-4 white-text text-center title">
-                    <h1 className=" white-text mb-0 pt-md-5 pt-5">Real Time Stocks Data</h1>
+                    <h1>Real Time Stocks Data</h1>
                   </div>
                   <div className="col-md-12 mb-4 white-text text-center title">
-                    <h5 className=" mt-2 mb-4">Saying something cool.</h5>
+                    <h5 className=" mt-2 mb-4">Welcome to JD Stocks</h5>
                   </div>
                   <div className="col-md-12 mb-4 white-text text-center title">
                     <MDBBtn rounded gradient="blue">Find out more</MDBBtn>
