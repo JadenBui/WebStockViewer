@@ -11,6 +11,15 @@
     margin-top: 20rem;
 }
 
+.optionrow{
+    margin: 1rem;
+    background-color: rgba(17, 17, 17, 0.911) ;
+}
+
+.optionrow select{
+    margin-top: 1rem;
+}
+
 .stocks-page input{
     margin: 1rem;
 }
@@ -18,12 +27,6 @@
 .stocks-page label{
     font-size: 1rem;
     display: block;
-    margin-right: 3rem;
-    background-color: rgba(0, 0, 0, 0.863);
-}
-
-.selectbox{
-    margin-bottom: 1rem;
 }
 
 .ag-header-cell-label {

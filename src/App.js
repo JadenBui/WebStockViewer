@@ -11,6 +11,7 @@ import BackDrop from "./Hox/BackDrop/BackDrop";
 import { MDBBadge } from "mdbreact";
 import StockList from "./Components/StockType/Stocks/StockList";
 import SingleStock from "./Components/StockType/Stock/SingleStock";
+import NotFound from "./Pages/404/NotFound";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 const App = () => {
@@ -149,6 +150,7 @@ const App = () => {
               )}
             ></Route>
             <Route path="/logout" render={() => <LogOut/>} />
+            <Route path="/:param" render={()=> <NotFound/>}/>
           </Switch>
         </Layout>
       </Router>

@@ -4,7 +4,7 @@ import ErrorHandler from "../../../Hox/ErrorHandler/ErrorHandler";
 import axios from "axios";
 import ApiGetter from "../../../Api/ApiGetter";
 import BackDrop from "../../../Hox/BackDrop/BackDrop";
-import { MDBAnimation, MDBCol, MDBRow, MDBBadge } from "mdbreact";
+import { MDBAnimation, MDBCol, MDBRow } from "mdbreact";
 import SelectBar from "../../SelectBar/SelectBar";
 import "../Stocks/Stocks.css";
 import { useHistory } from "react-router-dom";
@@ -106,11 +106,14 @@ const StockList = () => {
       />
       <MDBAnimation type="fadeIn" duration="0.8s">
         <MDBRow center>
-          <MDBCol md="2" middle>
+          <MDBCol md="2" middle className="optionrow">
             <form className="form-inline mt-4 mb-4">
-              <label className="badge" color="blue-gradient">
-                Search By Name
-              </label>
+              <label className="badge">Select By Industry</label>
+              <SelectBar onSelect={handleSelect} />
+            </form>
+
+            <form className="form-inline mt-4 mb-4">
+              <label className="badge">Search By Name</label>
               <input
                 onChange={handleChangeClientName}
                 className="form-control form-control-sm ml-3 w-75"
@@ -118,9 +121,7 @@ const StockList = () => {
                 placeholder="SearchByName"
                 aria-label="Search"
               />
-              <label className="badge" color="blue-gradient">
-                Search By Symbol
-              </label>
+              <label className="badge">Search By Symbol</label>
               <input
                 onChange={handleChangeClientSymbol}
                 className="form-control form-control-sm ml-3 w-75"
@@ -128,9 +129,7 @@ const StockList = () => {
                 placeholder="SearchBySymbol"
                 aria-label="Search"
               />
-              <label className="badge" color="blue-gradient">
-                Search By Industry
-              </label>
+              <label className="badge">Search By Industry</label>
               <input
                 onChange={handleChange}
                 className="form-control form-control-sm ml-3 w-75"
@@ -140,14 +139,7 @@ const StockList = () => {
               />
             </form>
           </MDBCol>
-          <MDBCol md="2" middle>
-            <div className="selectbox">
-              <label className="badge" color="blue-gradient">
-                Select By Industry
-              </label>
-              <SelectBar onSelect={handleSelect} />
-            </div>
-          </MDBCol>
+
           <Table
             stockData={stockList}
             onClick={onClick}
