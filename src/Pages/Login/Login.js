@@ -3,6 +3,7 @@ import { MDBAnimation } from "mdbreact";
 import "./Login.css";
 import { Redirect } from "react-router-dom";
 const Login = ({ onSubmit, handleEmail, handlePassword, auth, user }) => {
+  
   if (auth) {
     return <Redirect to="/stocklist" />;
   }

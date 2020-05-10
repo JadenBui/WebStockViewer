@@ -12,6 +12,7 @@ const Register = ({
   user,
   auth,
 }) => {
+  
   if (auth || register) {
     return <Redirect to="/login" />;
   }
