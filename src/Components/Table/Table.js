@@ -2,8 +2,8 @@ import React from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import "../StockType/Stocks/Stocks.css";
-import { MDBAnimation } from "mdbreact";
+import '../StockType/Stocks/Stocks.css'
+import {MDBAnimation} from 'mdbreact'
 
 const Table = ({ stockData, className, colSize, onClick }) => {
   const valid = stockData[0] !== undefined;
@@ -13,6 +13,7 @@ const Table = ({ stockData, className, colSize, onClick }) => {
     { headerName: "Symbol", field: "symbol", sortable: true, filter: true },
     { headerName: "Industry", field: "industry", sortable: true, filter: true },
   ];
+  
 
   if (valid) {
     headers = Object.keys(stockData[0]).map((headerName) => {
@@ -28,15 +29,15 @@ const Table = ({ stockData, className, colSize, onClick }) => {
 
   return (
     <MDBAnimation type="bounce" duration="0.8s">
-      <div className={className}>
-        <AgGridReact
-          columnDefs={headers}
-          onRowClicked={(row) => onClick(row.data.symbol)}
-          rowData={valid ? stockData : []}
-          pagination={colSize > 150 ? true : false}
-          paginationPageSize={20}
-        />
-      </div>
+    <div className={className}>
+      <AgGridReact
+        columnDefs={headers}
+        onRowClicked={(row) => onClick(row.data.symbol)}
+        rowData={valid ? stockData : []}
+        pagination={colSize > 150 ? true : false}
+        paginationPageSize={20}
+      />
+    </div>
     </MDBAnimation>
   );
 };
