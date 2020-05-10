@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Layout from "./Hox/Layout/Layout";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import StockTable from "./Components/StockTable/StockTable";
 import Register from "./Pages/Register/Register";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
@@ -128,7 +127,7 @@ const App = () => {
                 user={user}
               />
             </Route>
-            {/* <Route path="/stocks" render={()=><StockTable user={user} />}/> */}
+            
             <Route path="/stocklist" exact render={() => <StockList />} />
             <Route
               path="/stocklist/stock/:symbol"

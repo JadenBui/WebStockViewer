@@ -5,6 +5,12 @@
     height: 580px;
 }
 
+.spinner-grow{
+    height: 5rem !important;
+    width: 5rem !important;
+    margin-top: 20rem;
+}
+
 .stocks-page input{
     margin: 1rem;
 }
