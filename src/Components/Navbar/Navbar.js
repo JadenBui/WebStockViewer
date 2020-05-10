@@ -51,7 +51,7 @@ const ToolBar = ({ auth, handleLogOut }) => {
         <MDBCollapse id="navbarCollapse3" isOpen={dropDown.isOpen} navbar>
           <MDBNavbarNav left>
             <MDBNavItem>
-              <MDBNavLink to="/home">Home</MDBNavLink>
+              <MDBNavLink exact to="/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink to="/stocklist">Stocks</MDBNavLink>
@@ -60,7 +60,7 @@ const ToolBar = ({ auth, handleLogOut }) => {
               <MDBNavLink to="/login">Login</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink exact to="/">
+              <MDBNavLink exact to="/register">
                 Register
               </MDBNavLink>
             </MDBNavItem>

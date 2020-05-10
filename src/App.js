@@ -117,7 +117,7 @@ const App = () => {
       <Router>
         <Layout auth={response.auth} handleLogOut={handleLogOut}>
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/register">
               <Register
                 onSubmit={handleRegister}
                 handleEmail={handleEmail}
@@ -136,7 +136,7 @@ const App = () => {
                 <SingleStock match={match} auth={response.auth} />
               )}
             />
-            <Route path="/home" render={() => <Home />} />
+            <Route exact path="/" render={() => <Home />} />
             <Route
               path="/login"
               render={() => (

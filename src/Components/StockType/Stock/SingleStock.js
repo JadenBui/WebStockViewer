@@ -70,7 +70,7 @@ const SingleStock = ({ auth, match }) => {
         confirmHandler={confirmHandler}
         message={err.message}
       />
-      <MDBAnimation type="slideInDown" duration="0.5s">
+      <MDBAnimation type="fadeIn" duration="0.8s">
         <div className="stock">
           {dataParse.name ? (
             <MDBBadge className="badge" color="blue-gradient">

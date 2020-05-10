@@ -2,7 +2,7 @@ import React from "react";
 import "./Register.css";
 import { MDBAnimation } from "mdbreact";
 import { Redirect } from "react-router-dom";
-
+import stockImg from "../../assets/images/stock-exchange.jpg"
 const Register = ({
   onSubmit,
   handleName,
@@ -40,10 +40,10 @@ const Register = ({
                 </h4>
               </MDBAnimation>
 
-              <div className="view overlay zoom">
+              <div className="view">
                 <MDBAnimation type="bounceInDown" delay="1s">
                   <img
-                    src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png"
+                    src={stockImg}
                     alt="mobile"
                     className="img-fluid"
                   />
@@ -112,17 +112,6 @@ const Register = ({
                     Sign Up
                   </button>
 
-                  {/* <p>or sign up with:</p>
-
-                  <a href="#" className="mx-2" role="button"><i className="fab fa-facebook-f light-blue-text"></i></a>
-                  <a href="#" className="mx-2" role="button"><i className="fab fa-twitter light-blue-text"></i></a>
-                  <a href="#" className="mx-2" role="button"><i className="fab fa-linkedin-in light-blue-text"></i></a>
-                  <a href="#" className="mx-2" role="button"><i className="fab fa-github light-blue-text"></i></a> */}
-
-                  <hr />
-                  {/* <p>By clicking Sign up you argree to
-                      <a href="" target="_blank">terms of service</a>
-                  </p> */}
                 </form>
               </MDBAnimation>
             </div>
