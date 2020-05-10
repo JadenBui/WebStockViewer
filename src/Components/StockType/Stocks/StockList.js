@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Table from "../../Table/Table";
 import ErrorHandler from "../../../Hox/ErrorHandler/ErrorHandler";
-import axios from 'axios'
-import ApiGetter from '../../../Api/ApiGetter'
-import BackDrop from '../../../Hox/BackDrop/BackDrop'
-import { MDBAnimation, MDBCol, MDBRow } from "mdbreact";
-import SelectBar from '../../SelectBar/SelectBar'
-import '../Stocks/Stocks.css'
+import axios from "axios";
+import ApiGetter from "../../../Api/ApiGetter";
+import BackDrop from "../../../Hox/BackDrop/BackDrop";
+import { MDBAnimation, MDBCol, MDBRow, MDBBadge } from "mdbreact";
+import SelectBar from "../../SelectBar/SelectBar";
+import "../Stocks/Stocks.css";
 import { useHistory } from "react-router-dom";
 import { MDBCard, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon } from "mdbreact";
-
-
-
 
 const StockList = () => {
   const [data, loading, error] = ApiGetter("symbols");
   const [stockList, setStockList] = useState(null);
-  const [err, setErr] = useState({show:false,message:""});
+  const [err, setErr] = useState({ show: false, message: "" });
   const history = useHistory();
   useEffect(() => {
     setStockList(data);
   }, [data]);
 
-  const onClick = (symbol) =>{
-      history.push(`/stocklist/stock/${symbol}`);
-  }
+  const onClick = (symbol) => {
+    history.push(`/stocklist/stock/${symbol}`);
+  };
 
   const handleChange = async (e) => {
     if (e.target.value === "") return setStockList(data);
@@ -38,10 +35,18 @@ const StockList = () => {
     }
   };
 
-  const handleChangeClient = (e) => {
+  const handleChangeClientName = (e) => {
     const filteredData = data.filter(
       (data) =>
         data.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
+    );
+    setStockList(filteredData);
+  };
+
+  const handleChangeClientSymbol = (e) => {
+    const filteredData = data.filter(
+      (data) =>
+        data.symbol.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
     );
     setStockList(filteredData);
   };
@@ -57,11 +62,11 @@ const StockList = () => {
       );
       setStockList(response.data);
     } catch (e) {
-      setErr({show:true,message:"Cannot select"});
+      setErr({ show: true, message: "Cannot select" });
     }
   };
 
-  const confirmHandler = () => setErr({show:false,message:""});
+  const confirmHandler = () => setErr({ show: false, message: "" });
 
   if (loading) {
     return (
@@ -75,7 +80,7 @@ const StockList = () => {
 
   if (error) {
     return (
-    <div>
+      <div>
         <div className="errorDisplay">
           <MDBCard className="card-body">
             <MDBCardTitle>An Error Have Occured</MDBCardTitle>
@@ -88,42 +93,69 @@ const StockList = () => {
             </MDBBtn>
           </MDBCard>
         </div>
-    </div>);
+      </div>
+    );
   }
 
   return (
     <div className="stocks-page">
-      <ErrorHandler error={err.show} confirmHandler={confirmHandler} message={err.message} />
-      <MDBAnimation type="fadeInDown" duration="0.8s">
-      <MDBRow center>
-        <MDBCol md="auto" middle>
-          <form className="form-inline mt-4 mb-4">
-            <input
-              onChange={handleChangeClient}
-              className="form-control form-control-sm ml-3 w-75"
-              type="text"
-              placeholder="SearchByName"
-              aria-label="Search"
-            />
-          </form>
-        </MDBCol>
-        <MDBCol md="auto" middle>
-          <form className="form-inline mt-4 mb-4">
-            <input
-              onChange={handleChange}
-              className="form-control form-control-sm ml-3 w-75"
-              type="text"
-              placeholder="SearchByIndustry"
-              aria-label="Search"
-            />
-          </form>
-        </MDBCol>
-        <MDBCol md="2" middle>
-          <SelectBar onSelect={handleSelect} />
-        </MDBCol>
-      </MDBRow>
+      <ErrorHandler
+        error={err.show}
+        confirmHandler={confirmHandler}
+        message={err.message}
+      />
+      <MDBAnimation type="fadeIn" duration="0.8s">
+        <MDBRow center>
+          <MDBCol md="2" middle>
+            <form className="form-inline mt-4 mb-4">
+              <label className="badge" color="blue-gradient">
+                Search By Name
+              </label>
+              <input
+                onChange={handleChangeClientName}
+                className="form-control form-control-sm ml-3 w-75"
+                type="text"
+                placeholder="SearchByName"
+                aria-label="Search"
+              />
+              <label className="badge" color="blue-gradient">
+                Search By Symbol
+              </label>
+              <input
+                onChange={handleChangeClientSymbol}
+                className="form-control form-control-sm ml-3 w-75"
+                type="text"
+                placeholder="SearchBySymbol"
+                aria-label="Search"
+              />
+              <label className="badge" color="blue-gradient">
+                Search By Industry
+              </label>
+              <input
+                onChange={handleChange}
+                className="form-control form-control-sm ml-3 w-75"
+                type="text"
+                placeholder="SearchByIndustry"
+                aria-label="Search"
+              />
+            </form>
+          </MDBCol>
+          <MDBCol md="2" middle>
+            <div className="selectbox">
+              <label className="badge" color="blue-gradient">
+                Select By Industry
+              </label>
+              <SelectBar onSelect={handleSelect} />
+            </div>
+          </MDBCol>
+          <Table
+            stockData={stockList}
+            onClick={onClick}
+            className={"ag-theme-alpine-dark stocks"}
+            colSize={196}
+          />
+        </MDBRow>
       </MDBAnimation>
-      <Table stockData={stockList} onClick={onClick} className={"ag-theme-alpine-dark stocks"} colSize={196} />
     </div>
   );
 };
