@@ -5,6 +5,12 @@
     height: 580px;
 }
 
+.errorDisplay{
+    text-align: center;
+    padding: 20rem;
+    min-height: 100%;
+}
+
 .spinner-grow{
     height: 5rem !important;
     width: 5rem !important;

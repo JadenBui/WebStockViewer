@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Stock.css";
 import "../Stocks/Stocks.css";
-import { MDBBtn, MDBAnimation, MDBAlert, MDBBadge } from "mdbreact";
+import { MDBBtn, MDBAnimation, MDBAlert, MDBBadge, MDBCard, MDBCardTitle, MDBCardText, MDBIcon } from "mdbreact";
 import DateSelector from "../../DateSelector/DateSelector";
 import Chart from "../../Chart/Chart";
 import axios from "axios";
@@ -42,7 +42,7 @@ const SingleStock = ({ auth, match }) => {
     } catch (e) {
       setErr({
         show: true,
-        message: "Sorry, we haven't got data for this time",
+        message: e.response.data.message,
       });
     }
   };
@@ -60,7 +60,22 @@ const SingleStock = ({ auth, match }) => {
   }
 
   if (error) {
-    setErr({ show: true, message: "Could not connect to the server" });
+    return (
+      <div>
+        <div className="errorDisplay">
+          <MDBCard className="card-body">
+            <MDBCardTitle>An Error Have Occured</MDBCardTitle>
+            <MDBCardText>Please try again</MDBCardText>
+            <MDBBtn
+              gradient="young-passion"
+              style={{ width: "20%", margin: "auto" }}
+            >
+              <MDBIcon icon="undo" />
+            </MDBBtn>
+          </MDBCard>
+        </div>
+      </div>
+    );
   }
 
   return (
