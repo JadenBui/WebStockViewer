@@ -10,10 +10,15 @@ import "../Stocks/Stocks.css";
 import { useHistory } from "react-router-dom";
 import { MDBCard, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon } from "mdbreact";
 
+const EMPTY_STRING = "";
+const axios_stock = axios.create({
+  baseURL: 'http://131.181.190.87:3000/stocks/symbols?industry=',
+});
+
 const StockList = () => {
   const [data, loading, error] = ApiGetter("symbols");
   const [stockList, setStockList] = useState(null);
-  const [err, setErr] = useState({ show: false, message: "" });
+  const [err, setErr] = useState({ show: false, message: EMPTY_STRING });
   const history = useHistory();
   useEffect(() => {
     setStockList(data);
@@ -24,10 +29,11 @@ const StockList = () => {
   };
 
   const handleChange = async (e) => {
-    if (e.target.value === "") return setStockList(data);
+    const stockIndustry = e.target.value;
+    if (stockIndustry === EMPTY_STRING) return setStockList(data);
     try {
-      const response = await axios.get(
-        `http://131.181.190.87:3000/stocks/symbols?industry=${e.target.value}`
+      const response = await axios_stock.get(
+        `${stockIndustry}`
       );
       setStockList(response.data);
     } catch (e) {
@@ -36,29 +42,32 @@ const StockList = () => {
   };
 
   const handleChangeClientName = (e) => {
+    const stockName = e.target.value;
     const filteredData = data.filter(
       (data) =>
-        data.name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
+        data.name.toLowerCase().indexOf(stockName.toLowerCase()) !== -1
     );
     setStockList(filteredData);
   };
 
   const handleChangeClientSymbol = (e) => {
+    const stockSymbol = e.target.value;
     const filteredData = data.filter(
       (data) =>
-        data.symbol.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
+        data.symbol.toLowerCase().indexOf(stockSymbol.toLowerCase()) !== -1
     );
     setStockList(filteredData);
   };
 
   const handleSelect = async (e) => {
-    if (e.target[e.target.selectedIndex].value === "all") {
+    const selectedIndustry = e.target[e.target.selectedIndex].value;
+    if (selectedIndustry === "all") {
       return setStockList(data);
     }
     try {
-      const query = e.target[e.target.selectedIndex].value.replace(" ", "%20");
-      const response = await axios.get(
-        `http://131.181.190.87:3000/stocks/symbols?industry=${query}`
+      const query = encodeURIComponent(selectedIndustry);
+      const response = await axios_stock.get(
+        `{query}`
       );
       setStockList(response.data);
     } catch (e) {
@@ -66,7 +75,7 @@ const StockList = () => {
     }
   };
 
-  const confirmHandler = () => setErr({ show: false, message: "" });
+  const confirmError = () => setErr({ show: false, message: EMPTY_STRING });
 
   if (loading) {
     return (
@@ -101,19 +110,19 @@ const StockList = () => {
     <div className="stocks-page">
       <ErrorHandler
         error={err.show}
-        confirmHandler={confirmHandler}
+        confirmHandler={confirmError}
         message={err.message}
       />
       <MDBAnimation type="fadeIn" duration="0.8s">
         <MDBRow center>
           <MDBCol md="2" middle className="optionrow">
             <form className="form-inline mt-4 mb-4">
-              <label className="badge">Select By Industry</label>
+              <label className="badge"><MDBIcon icon="search" /> Select By Industry </label>
               <SelectBar onSelect={handleSelect} />
             </form>
 
             <form className="form-inline mt-4 mb-4">
-              <label className="badge">Search By Name</label>
+              <label className="badge"><MDBIcon icon="file-signature" />Search By Name</label>
               <input
                 onChange={handleChangeClientName}
                 className="form-control form-control-sm ml-3 w-75"
@@ -121,7 +130,7 @@ const StockList = () => {
                 placeholder="SearchByName"
                 aria-label="Search"
               />
-              <label className="badge">Search By Symbol</label>
+              <label className="badge"><MDBIcon fab icon="sketch" />Search By Symbol</label>
               <input
                 onChange={handleChangeClientSymbol}
                 className="form-control form-control-sm ml-3 w-75"
@@ -129,7 +138,7 @@ const StockList = () => {
                 placeholder="SearchBySymbol"
                 aria-label="Search"
               />
-              <label className="badge">Search By Industry</label>
+              <label className="badge"><MDBIcon icon="industry" />Search By Industry</label>
               <input
                 onChange={handleChange}
                 className="form-control form-control-sm ml-3 w-75"

@@ -7,19 +7,19 @@ import { MDBBtn } from "mdbreact";
 const DateSelector = ({ onSearch }) => {
   const [date, setDate] = useState({ from: new Date(), to: new Date() });
 
-  const handleFrom = (date) =>
+  const handleFromDate = (date) =>
     setDate((preV) => {
       return { to: preV.to, from: date };
     });
-  const handleTo = (date) =>
+  const handleToDate = (date) =>
     setDate((preV) => {
       return { from: preV.from, to: date };
     });
 
   const handleSearch = () => {
     const parsedDate = {
-      from: date.from.toISOString().replace(/:/g, "%3A"),
-      to: date.to.toISOString().replace(/:/g, "%3A"),
+      from: encodeURIComponent(date.from.toISOString()),
+      to: encodeURIComponent(date.to.toISOString()),
     };
     onSearch(parsedDate);
   };
@@ -27,10 +27,10 @@ const DateSelector = ({ onSearch }) => {
   return (
     <div className="dateSelector">
       <div className="inline">
-        <DatePicker selected={date.from} onChange={handleFrom} />
+        <DatePicker selected={date.from} onChange={handleFromDate} />
       </div>
       <div className="inline">
-        <DatePicker selected={date.to} onChange={handleTo} />
+        <DatePicker selected={date.to} onChange={handleToDate} />
       </div>
 
       <div className="inline">

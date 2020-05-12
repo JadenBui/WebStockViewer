@@ -1,10 +1,10 @@
 import React from "react";
 import "./BackDrop.css";
 
-const BackDrop = (props) => {
-  return props.show ? (
-    <div className="backdrop" onClick={props.clickHandler}>
-      {props.children}
+const BackDrop = ({show,clickHandler,children}) => {
+  return show ? (
+    <div className="backdrop" onClick={clickHandler}>
+      {children}
     </div>
   ) : null;
 };

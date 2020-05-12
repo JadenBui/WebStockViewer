@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const DELAY_TIME = 700;
 const ApiGetter = (tag) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
   useEffect(() => {
     setLoading(true);
     axios
       .get(`http://131.181.190.87:3000/stocks/${tag}`)
       .then((res) => res.data)
       .then((res) => {
+        //Delay the process of returning data for loading stimulation
         setTimeout(() => {
           setLoading(false);
-        }, 700);
+        }, DELAY_TIME);
         return res;
       })
       .then((res) => setData(res))

@@ -14,6 +14,7 @@ const Table = ({ stockData, className, colSize, onClick }) => {
     { headerName: "Industry", field: "industry", sortable: true, filter: true },
   ];
 
+  //render headers dynamically
   if (valid) {
     headers = Object.keys(stockData[0]).map((headerName) => {
       return {

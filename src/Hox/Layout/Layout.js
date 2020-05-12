@@ -3,11 +3,11 @@ import Navbar from "../../Components/Navbar/Navbar";
 import "./Layout.css";
 import Footer from "../../Components/Footer/Footer";
 
-const Layout = (props) => {
+const Layout = ({auth,handleLogOut,children}) => {
   return (
     <React.Fragment>
-      <Navbar auth={props.auth} handleLogOut={props.handleLogOut} />
-      <div className="layout">{props.children}</div>
+      <Navbar auth={auth} handleLogOut={handleLogOut} />
+      <div className="layout">{children}</div>
       <Footer />
     </React.Fragment>
   );

@@ -53,8 +53,7 @@ const Home = () => {
       </MDBAnimation>
 
       <div className="morpheus-den-gradient section">
-        <MDBRow>
-          <MDBCol md="1"></MDBCol>
+        <MDBRow center>
           <MDBAnimation type="slideInLeft" duration="0.8s">
             <MDBCol md="auto">
               <MDBCard
@@ -146,8 +145,8 @@ const Home = () => {
         </MDBRow>
         <MDBAnimation type="fadeInUp" delay="2s">
           <div style={{ marginTop: "3rem" }}>
-            <MDBRow>
-              <MDBCol style={{ maxWidth: "60rem", margin: "auto" }}>
+            <MDBRow center>
+              <MDBCol style={{ maxWidth: "60rem"}}>
                 <MDBCard reverse>
                   <MDBCardImage
                     cascade

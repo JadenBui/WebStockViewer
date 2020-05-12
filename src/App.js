@@ -7,19 +7,32 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import LogOut from "./Pages/LogOut/LogOut";
 import axios from "axios";
-import BackDrop from "./Hox/BackDrop/BackDrop";
-import { MDBBadge } from "mdbreact";
+import ErrorHandler from "./Hox/ErrorHandler/ErrorHandler"
 import StockList from "./Components/StockType/Stocks/StockList";
 import SingleStock from "./Components/StockType/Stock/SingleStock";
 import NotFound from "./Pages/404/NotFound";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
-const App = () => {
-  const [user, setUser] = useState({ name: "", email: "", password: "" });
-  const [response, setResponse] = useState({ auth: false, register: false });
-  const [error, setError] = useState(null);
+const EMPTY_STRING = "";
+const axios_auth = axios.create({
+  baseURL: 'http://131.181.190.87:3000/user/',
+});
 
-  const clearUser = () => setUser({ name: "", email: "", password: "" });
+const App = () => {
+  const [user, setUser] = useState({
+    name: EMPTY_STRING,
+    email: EMPTY_STRING,
+    password: EMPTY_STRING,
+  });
+  const [response, setResponse] = useState({ auth: false, register: false });
+  const [err, setErr] = useState({ show: false, message: EMPTY_STRING });
+
+  const clearUser = () =>
+    setUser({
+      name: EMPTY_STRING,
+      email: EMPTY_STRING,
+      password: EMPTY_STRING,
+    });
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -29,8 +42,8 @@ const App = () => {
     };
 
     try {
-      const data = await axios.post(
-        "http://131.181.190.87:3000/user/register",
+      const data = await axios_auth.post(
+        "register",
         newUser
       );
       const parsedData = data.data;
@@ -40,7 +53,8 @@ const App = () => {
         clearUser();
       }
     } catch (e) {
-      setError(e.response.data);
+      const errorMessage = e.response.data.message;
+      setErr({ show: true, message: errorMessage });
       clearUser();
     }
   };
@@ -53,8 +67,8 @@ const App = () => {
     };
 
     try {
-      const data = await axios.post(
-        "http://131.181.190.87:3000/user/login",
+      const data = await axios_auth.post(
+        "login",
         newUser
       );
       const parsedData = data.data;
@@ -68,33 +82,33 @@ const App = () => {
       clearUser();
     } catch (e) {
       const errorMessage = e.response.data.message;
-      setError(e.response.data);
+      setErr({ show: true, message: errorMessage });
       if (errorMessage.includes("email")) {
         clearUser();
       } else {
-        setUser({ ...user, password: "" });
+        setUser({ ...user, password: EMPTY_STRING });
       }
     }
   };
 
   const handleEmail = (e) => {
-    const value = e.target.value;
+    const newEmail = e.target.value;
     setUser((preV) => {
-      return { ...preV, email: value };
+      return { ...preV, email: newEmail };
     });
   };
 
   const handlePassword = (e) => {
-    const value = e.target.value;
+    const newPassword = e.target.value;
     setUser((preV) => {
-      return { ...preV, password: value };
+      return { ...preV, password: newPassword };
     });
   };
 
   const handleName = (e) => {
-    const value = e.target.value;
+    const newName = e.target.value;
     setUser((preV) => {
-      return { ...preV, name: value };
+      return { ...preV, name: newName };
     });
   };
 
@@ -104,16 +118,15 @@ const App = () => {
     setResponse({ ...response, auth: false, register: false });
   };
 
+  const confirmHandler = () => setErr({ show: false, message: EMPTY_STRING });
+
   return (
     <div className="App">
-      <BackDrop show={error} clickHandler={() => setError(null)}>
-        <h1 className="alert-danger message">
-          There's something wrong with your request:
-          <MDBBadge color="young-passion-gradient">
-            {error ? error.message : null}
-          </MDBBadge>{" "}
-        </h1>
-      </BackDrop>
+      <ErrorHandler
+        error={err.show}
+        confirmHandler={confirmHandler}
+        message={err.message}
+      />
       <Router>
         <Layout auth={response.auth} handleLogOut={handleLogOut}>
           <Switch>
@@ -128,7 +141,6 @@ const App = () => {
                 user={user}
               />
             </Route>
-            
             <Route path="/stocklist" exact render={() => <StockList />} />
             <Route
               path="/stocklist/stock/:symbol"
@@ -149,8 +161,8 @@ const App = () => {
                 />
               )}
             ></Route>
-            <Route path="/logout" render={() => <LogOut/>} />
-            <Route path="/:param" render={()=> <NotFound/>}/>
+            <Route path="/logout" render={() => <LogOut />} />
+            <Route path="/:param" render={() => <NotFound />} />
           </Switch>
         </Layout>
       </Router>

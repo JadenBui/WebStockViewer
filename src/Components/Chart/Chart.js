@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
-import { MDBContainer, MDBAnimation } from "mdbreact";
+import { MDBContainer, MDBAnimation, MDBBadge } from "mdbreact";
 
 const Chart = ({ chartData }) => {
   const [option, setOption] = useState("");
@@ -109,6 +109,7 @@ const Chart = ({ chartData }) => {
   return (
     <MDBContainer>
       <MDBAnimation type="fadeInUp" duration="2s">
+        <MDBBadge className="badge" color="blue-gradient"><h2>SELECT KEY DATA</h2></MDBBadge>
         <select
           onChange={onSelect}
           defaultValue="0"
