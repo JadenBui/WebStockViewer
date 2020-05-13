@@ -7,15 +7,18 @@ import { MDBBtn } from "mdbreact";
 const DateSelector = ({ onSearch }) => {
   const [date, setDate] = useState({ from: new Date(), to: new Date() });
 
+  //Handle date selection
   const handleFromDate = (date) =>
     setDate((preV) => {
       return { to: preV.to, from: date };
     });
+
   const handleToDate = (date) =>
     setDate((preV) => {
       return { from: preV.from, to: date };
     });
 
+  //Passing data on to parent component  
   const handleSearch = () => {
     const parsedDate = {
       from: encodeURIComponent(date.from.toISOString()),
