@@ -124,33 +124,33 @@ const StockList = () => {
         <MDBRow center>
           <MDBCol md="2" middle className="optionrow">
             <form className="form-inline mt-4 mb-4">
-              <label className="badge"><MDBIcon icon="search" /> Select By Industry </label>
+              <label className="badge"><MDBIcon icon="search" /> Select Industry </label>
               <SelectBar onSelect={handleSelect} />
             </form>
 
             <form className="form-inline mt-4 mb-4">
-              <label className="badge"><MDBIcon icon="file-signature" />Search By Name</label>
+              <label className="badge"><MDBIcon icon="file-signature" />Filter By Name</label>
               <input
                 onChange={handleChangeClientName}
                 className="form-control form-control-sm ml-3 w-75"
                 type="text"
-                placeholder="SearchByName"
+                placeholder="FilterByName"
                 aria-label="Search"
               />
-              <label className="badge"><MDBIcon fab icon="sketch" />Search By Symbol</label>
+              <label className="badge"><MDBIcon fab icon="sketch" />Filter By Symbol</label>
               <input
                 onChange={handleChangeClientSymbol}
                 className="form-control form-control-sm ml-3 w-75"
                 type="text"
-                placeholder="SearchBySymbol"
+                placeholder="FilterBySymbol"
                 aria-label="Search"
               />
-              <label className="badge"><MDBIcon icon="industry" />Search By Industry</label>
+              <label className="badge"><MDBIcon icon="industry" />Filter By Industry</label>
               <input
                 onChange={handleChange}
                 className="form-control form-control-sm ml-3 w-75"
                 type="text"
-                placeholder="SearchByIndustry"
+                placeholder="FilterByIndustry"
                 aria-label="Search"
               />
             </form>
