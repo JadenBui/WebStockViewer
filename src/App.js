@@ -67,7 +67,6 @@ const App = () => {
       const data = await axios_auth.post("login", newUser);
       const parsedData = data.data;
 
-      localStorage.setItem("name", user.name);
       localStorage.setItem("email", user.email);
       localStorage.setItem("token", parsedData.token);
 
