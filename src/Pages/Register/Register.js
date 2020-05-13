@@ -60,6 +60,7 @@ const Register = ({
                         onChange={(e) => handleName(e)}
                         className="form-control"
                         placeholder="First Name"
+                        required
                       />
                     </div>
                   </div>
