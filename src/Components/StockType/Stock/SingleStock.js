@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./Stock.css";
 import "../Stocks/Stocks.css";
-import { MDBBtn, MDBAnimation, MDBAlert, MDBBadge, MDBCard, MDBCardTitle, MDBCardText, MDBIcon } from "mdbreact";
+import {
+  MDBBtn,
+  MDBAnimation,
+  MDBAlert,
+  MDBBadge,
+  MDBCard,
+  MDBCardTitle,
+  MDBCardText,
+  MDBIcon,
+} from "mdbreact";
 import DateSelector from "../../DateSelector/DateSelector";
 import Chart from "../../Chart/Chart";
 import axios from "axios";
@@ -29,59 +38,59 @@ const SingleStock = ({ auth, match }) => {
     timestamp: new Date(data.timestamp).toLocaleDateString(),
   };
 
-  const handleSearch = useCallback(async (date) => {
-    const token = localStorage.getItem("token");
-    try {
-      const data = await axios({
-        method: "get",
-        headers: { Authorization: `Bearer ${token}` },
-        url: `http://131.181.190.87:3000/stocks/authed/${symbol}?from=${date.from}&to=${date.to}`,
-      });
-      const chartData = data.data;
-      setChart({ dataLine: chartData });
-    } catch (e) {
-      setErr({
-        show: true,
-        message: e.response.data.message,
-      });
-    }
-  },[symbol])
+  const handleSearch = useCallback(
+    async (date) => {
+      const token = localStorage.getItem("token");
+      try {
+        const data = await axios({
+          method: "get",
+          headers: { Authorization: `Bearer ${token}` },
+          url: `http://131.181.190.87:3000/stocks/authed/${symbol}?from=${date.from}&to=${date.to}`,
+        });
+        const chartData = data.data;
+        setChart({ dataLine: chartData });
+      } catch (e) {
+        setErr({
+          show: true,
+          message: e.response.data.message,
+        });
+      }
+    },
+    [symbol]
+  );
 
   const confirmHandler = () => setErr({ show: false, message: EMPTY_STRING });
 
-  const ControlPanel = useCallback(()=>{
-    if(auth){
-      return (
-        <DateSelector onSearch={handleSearch} />
-      )
+  const ControlPanel = useCallback(() => {
+    if (auth) {
+      return <DateSelector onSearch={handleSearch} />;
     }
-      return (
-        <MDBAlert color="success" className="lable">
-          You haven't login. Click
-          <Link to="/login">
-            <p> HERE </p>
-          </Link>
-          to login.
-        </MDBAlert>
-      )
-  },[auth,handleSearch])
+    return (
+      <MDBAlert color="success" className="lable">
+        You haven't login. Click
+        <Link to="/login">
+          <p> HERE </p>
+        </Link>
+        to login.
+      </MDBAlert>
+    );
+  }, [auth, handleSearch]);
 
-  const StockLable = useCallback(()=>{
-    if(dataParsed.name){
+  const StockLable = useCallback(() => {
+    if (dataParsed.name) {
       return (
         <MDBBadge className="badge" color="blue-gradient">
           <h2>
-            {dataParsed.name.toUpperCase()} ({dataParsed.symbol.toUpperCase()}
-            )
+            {dataParsed.name.toUpperCase()} ({dataParsed.symbol.toUpperCase()})
           </h2>
         </MDBBadge>
-      )
+      );
     }
-    return null; 
-  },[dataParsed.name,dataParsed.symbol]);
+    return null;
+  }, [dataParsed.name, dataParsed.symbol]);
 
-  const StockTable = useCallback(()=>{
-    if(chartData.dataLine){
+  const StockTable = useCallback(() => {
+    if (chartData.dataLine) {
       return (
         <div className="stocks-page">
           <MDBAnimation type="bounce" duration="0.8s">
@@ -102,7 +111,7 @@ const SingleStock = ({ auth, match }) => {
             />
           </MDBAnimation>
         </div>
-      )
+      );
     }
     return (
       <div className="stocks-page">
@@ -122,17 +131,23 @@ const SingleStock = ({ auth, match }) => {
           })}
         />
       </div>
-    )
-  },[chartData.dataLine,dataParsed])
+    );
+  }, [chartData.dataLine, dataParsed]);
 
-  const DisplayChart = useCallback(()=>{
-    if(chartData.dataLine){
+  const DisplayChart = useCallback(() => {
+    if (chartData.dataLine) {
       return (
-        <Chart chartData={chartData.dataLine.map(data => {return{...data}}).reverse()} />
-      )
+        <Chart
+          chartData={chartData.dataLine
+            .map((data) => {
+              return { ...data };
+            })
+            .reverse()}
+        />
+      );
     }
     return null;
-  },[chartData.dataLine])
+  }, [chartData.dataLine]);
 
   if (loading) {
     return (
@@ -172,11 +187,11 @@ const SingleStock = ({ auth, match }) => {
       />
       <MDBAnimation type="fadeIn" duration="0.8s">
         <div className="stock">
-          <StockLable/>
-          <ControlPanel/>
-          <StockTable/>
+          <StockLable />
+          <ControlPanel />
+          <StockTable />
           <div className="chart">
-            <DisplayChart/>
+            <DisplayChart />
           </div>
           <MDBAnimation type="fadeIn" delay="0.5s">
             <Link to="/stocklist">

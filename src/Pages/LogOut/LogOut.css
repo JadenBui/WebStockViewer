@@ -4,3 +4,11 @@
     margin: auto;
     padding: 20rem;
 } 
+
+.logout .notice{
+    font-size: 1.5rem;
+}
+
+.logout .badge{
+    font-size: 2rem;
+}

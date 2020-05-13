@@ -21,10 +21,9 @@ const ToolBar = ({ auth, handleLogOut }) => {
   let username = "Guest";
   let name;
   if (auth) {
-    name =
-      localStorage.getItem("name") === ""
-        ? localStorage.getItem("name")
-        : "Mr.Unknown";
+    name = localStorage.getItem("name")
+      ? localStorage.getItem("name")
+      : "Mr.Unknown";
     username = localStorage.getItem("email");
   }
 
@@ -51,7 +50,9 @@ const ToolBar = ({ auth, handleLogOut }) => {
         <MDBCollapse id="navbarCollapse3" isOpen={dropDown.isOpen} navbar>
           <MDBNavbarNav left>
             <MDBNavItem>
-              <MDBNavLink exact to="/">Home</MDBNavLink>
+              <MDBNavLink exact to="/">
+                Home
+              </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink to="/stocklist">Stocks</MDBNavLink>

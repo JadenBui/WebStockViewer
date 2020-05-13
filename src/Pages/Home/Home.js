@@ -3,11 +3,8 @@ import "./Home.css";
 import data from "../../assets/images/data.jpeg";
 import programming from "../../assets/images/programming.jpeg";
 import stock from "../../assets/images/stock.jpeg";
+import singleCard from "../../assets/images/singleCard.jpg";
 
-// import {
-//   Card, CardImg, CardText, CardBody,
-//   CardTitle, CardSubtitle, Button
-// } from 'reactstrap';
 import {
   MDBAnimation,
   MDBCarouselCaption,
@@ -146,12 +143,12 @@ const Home = () => {
         <MDBAnimation type="fadeInUp" delay="2s">
           <div style={{ marginTop: "3rem" }}>
             <MDBRow center>
-              <MDBCol style={{ maxWidth: "60rem"}}>
+              <MDBCol style={{ maxWidth: "60rem" }}>
                 <MDBCard reverse>
                   <MDBCardImage
                     cascade
                     style={{ height: "20rem", width: "60rem" }}
-                    src="https://treasurytoday.com/-/media/images/insight-and-analysis/short-reads/2019-06-06-ti-01__2d-rendering-cloud-computing-concept-636510281__1920x1080.jpg?w=1800&usecustomfunctions=1&centercrop=1&hash=661858DD0A1269D4A8A015B3D70E990C"
+                    src={singleCard}
                   />
                   <MDBCardBody cascade className="text-center">
                     <MDBCardTitle>Our Mission</MDBCardTitle>

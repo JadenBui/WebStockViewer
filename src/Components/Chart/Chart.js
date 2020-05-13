@@ -109,7 +109,9 @@ const Chart = ({ chartData }) => {
   return (
     <MDBContainer>
       <MDBAnimation type="fadeInUp" duration="2s">
-        <MDBBadge className="badge" color="blue-gradient"><h2>SELECT KEY DATA</h2></MDBBadge>
+        <MDBBadge className="badge" color="blue-gradient">
+          <h2>SELECT KEY DATA</h2>
+        </MDBBadge>
         <select
           onChange={onSelect}
           defaultValue="0"

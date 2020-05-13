@@ -1,20 +1,16 @@
 import React from "react";
 import { MDBAnimation } from "mdbreact";
 import "./Login.css";
+import loginBg from "../../assets/images/loginBG.jpg";
 import { Redirect } from "react-router-dom";
 const Login = ({ onSubmit, handleEmail, handlePassword, auth, user }) => {
-  
   if (auth) {
     return <Redirect to="/stocklist" />;
   }
 
   return (
     <div>
-      <img
-        className="login"
-        src="https://www.elsetge.cat/myimg/f/160-1606133_financial-graph-on-technology-abstract-background-picture-stock.jpg"
-        alt="background"
-      ></img>
+      <img className="login" src={loginBg} alt="background"></img>
       <div className="mask rgba-gradient align-items-center login-div">
         <div className="container">
           <div className="row justify-content-between">

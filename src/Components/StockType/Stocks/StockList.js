@@ -12,7 +12,7 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon } from "mdbreact";
 
 const EMPTY_STRING = "";
 const axios_stock = axios.create({
-  baseURL: 'http://131.181.190.87:3000/stocks/symbols?industry=',
+  baseURL: 'http://131.181.190.87:3000/stocks',
 });
 
 const StockList = () => {
@@ -33,7 +33,7 @@ const StockList = () => {
     if (stockIndustry === EMPTY_STRING) return setStockList(data);
     try {
       const response = await axios_stock.get(
-        `${stockIndustry}`
+        `symbols?industry=${stockIndustry}`
       );
       setStockList(response.data);
     } catch (e) {
@@ -65,9 +65,9 @@ const StockList = () => {
       return setStockList(data);
     }
     try {
-      const query = encodeURIComponent(selectedIndustry);
+      const parsedIndustry = encodeURIComponent(selectedIndustry);
       const response = await axios_stock.get(
-        `{query}`
+        `symbols?industry=${parsedIndustry}`
       );
       setStockList(response.data);
     } catch (e) {

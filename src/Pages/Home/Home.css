@@ -15,7 +15,7 @@
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
-      ), url("https://supplychainbeyond.com/wp-content/uploads/2018/10/chain-of-custody-solutions-in-supply-chain-management-1920x1080.jpg");
+      ), url("../../assets/images/homeBG.jpg");
     margin-top: -5rem;
     background-size:100% auto;
     background-repeat: no-repeat;

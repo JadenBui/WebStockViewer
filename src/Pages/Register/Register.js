@@ -2,7 +2,8 @@ import React from "react";
 import "./Register.css";
 import { MDBAnimation } from "mdbreact";
 import { Redirect } from "react-router-dom";
-import stockImg from "../../assets/images/stock-exchange.jpg"
+import registerBg from "../../assets/images/loginBG.jpg";
+import stockImg from "../../assets/images/stock-exchange.jpg";
 const Register = ({
   onSubmit,
   handleName,
@@ -12,18 +13,13 @@ const Register = ({
   user,
   auth,
 }) => {
-  
   if (auth || register) {
     return <Redirect to="/login" />;
   }
 
   return (
     <div>
-      <img
-        className="register"
-        src="https://www.elsetge.cat/myimg/f/160-1606133_financial-graph-on-technology-abstract-background-picture-stock.jpg"
-        alt="background"
-      ></img>
+      <img className="register" src={registerBg} alt="background"></img>
       <div className="mask rgba-gradient align-items-center register-div">
         <div className="container">
           <div className="row justify-content-between">
@@ -43,11 +39,7 @@ const Register = ({
 
               <div className="view">
                 <MDBAnimation type="bounceInDown" delay="1s">
-                  <img
-                    src={stockImg}
-                    alt="mobile"
-                    className="img-fluid"
-                  />
+                  <img src={stockImg} alt="mobile" className="img-fluid" />
                 </MDBAnimation>
               </div>
             </div>
@@ -112,7 +104,6 @@ const Register = ({
                   <button className="btn btn-info my-4 btn-block" type="submit">
                     Sign Up
                   </button>
-
                 </form>
               </MDBAnimation>
             </div>

@@ -7,7 +7,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import LogOut from "./Pages/LogOut/LogOut";
 import axios from "axios";
-import ErrorHandler from "./Hox/ErrorHandler/ErrorHandler"
+import ErrorHandler from "./Hox/ErrorHandler/ErrorHandler";
 import StockList from "./Components/StockType/Stocks/StockList";
 import SingleStock from "./Components/StockType/Stock/SingleStock";
 import NotFound from "./Pages/404/NotFound";
@@ -15,7 +15,7 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 const EMPTY_STRING = "";
 const axios_auth = axios.create({
-  baseURL: 'http://131.181.190.87:3000/user/',
+  baseURL: "http://131.181.190.87:3000/user",
 });
 
 const App = () => {
@@ -42,10 +42,7 @@ const App = () => {
     };
 
     try {
-      const data = await axios_auth.post(
-        "register",
-        newUser
-      );
+      const data = await axios_auth.post("register", newUser);
       const parsedData = data.data;
       if (parsedData) {
         setResponse({ ...response, register: true });
@@ -67,10 +64,7 @@ const App = () => {
     };
 
     try {
-      const data = await axios_auth.post(
-        "login",
-        newUser
-      );
+      const data = await axios_auth.post("login", newUser);
       const parsedData = data.data;
 
       localStorage.setItem("name", user.name);

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { MDBFooter,MDBIcon } from "mdbreact";
+import { MDBFooter, MDBIcon } from "mdbreact";
 
 const Footer = () => {
   return (
@@ -8,7 +8,10 @@ const Footer = () => {
       <div className="container">
         <ul className="list-unstyled list-inline text-center py-2">
           <li className="list-inline-item">
-            <h5 className="mb-1"><MDBIcon fab icon="react" />Website for fetching stocks data</h5>
+            <h5 className="mb-1">
+              <MDBIcon fab icon="react" />
+              Website for fetching stocks data
+            </h5>
           </li>
         </ul>
       </div>
