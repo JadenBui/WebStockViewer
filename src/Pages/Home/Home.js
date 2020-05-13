@@ -23,6 +23,7 @@ import {
   MDBIcon,
   MDBBtn,
 } from "mdbreact";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -39,9 +40,11 @@ const Home = () => {
                   <h5 className=" mt-2 mb-4">Welcome to JD Stocks</h5>
                 </div>
                 <div className="col-md-12 mb-4 white-text text-center title">
-                  <MDBBtn rounded gradient="blue">
-                    Find out more
-                  </MDBBtn>
+                  <Link to="/stocklist">
+                    <MDBBtn rounded gradient="blue">
+                      Find out more
+                    </MDBBtn>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -186,9 +189,9 @@ const Home = () => {
                 <img className="d-block w-100" src={data} alt="First slide" />
                 <MDBMask overlay="black-light" />
               </MDBView>
-              <MDBCarouselCaption>
-                <h3 className="h3-responsive">Light mask</h3>
-                <p>First text</p>
+              <MDBCarouselCaption className="caro-caption">
+                <h3 className="h3-responsive">Efficient</h3>
+                <p>Made to perform fast</p>
               </MDBCarouselCaption>
             </MDBCarouselItem>
             <MDBCarouselItem itemId="2">
@@ -199,11 +202,19 @@ const Home = () => {
                   alt="Second slide"
                 />
               </MDBView>
+              <MDBCarouselCaption className="caro-caption">
+                <h3 className="h3-responsive">Secure</h3>
+                <p>Edge to edge encrytion</p>
+              </MDBCarouselCaption>
             </MDBCarouselItem>
             <MDBCarouselItem itemId="3">
               <MDBView>
                 <img className="d-block w-100" src={stock} alt="Third slide" />
               </MDBView>
+              <MDBCarouselCaption className="caro-caption">
+                <h3 className="h3-responsive">Easy to use</h3>
+                <p>Simple design</p>
+              </MDBCarouselCaption>
             </MDBCarouselItem>
           </MDBCarouselInner>
         </MDBCarousel>

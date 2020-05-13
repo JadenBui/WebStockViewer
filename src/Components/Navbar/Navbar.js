@@ -18,13 +18,15 @@ import { Link } from "react-router-dom";
 
 const ToolBar = ({ auth, handleLogOut }) => {
   const [dropDown, setdropDown] = useState({ isOpen: false });
-  let username = "Guest";
+  let email = "Guest";
   let name;
+  
   if (auth) {
+    //Set default name if not registered with one
     name = localStorage.getItem("name")
       ? localStorage.getItem("name")
       : "Mr.Unknown";
-    username = localStorage.getItem("email");
+    email = localStorage.getItem("email");
   }
 
   const toggleCollapse = () => {
@@ -71,7 +73,7 @@ const ToolBar = ({ auth, handleLogOut }) => {
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                   <h5 style={{ display: "inline", margin: "2rem" }}>
-                    {auth ? username : "Guest"}
+                    {email}
                   </h5>
                   <MDBIcon icon="user" />
                 </MDBDropdownToggle>

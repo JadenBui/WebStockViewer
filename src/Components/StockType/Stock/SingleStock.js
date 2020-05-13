@@ -58,10 +58,11 @@ const SingleStock = ({ auth, match }) => {
     },
     [symbol]
   );
+  
+  //close warning backdrop
+  const confirmError = () => setErr({ show: false, message: EMPTY_STRING });
 
-  const confirmHandler = () => setErr({ show: false, message: EMPTY_STRING });
-
-  const ControlPanel = useCallback(() => {
+  const DatePanel = useCallback(() => {
     if (auth) {
       return <DateSelector onSearch={handleSearch} />;
     }
@@ -167,6 +168,7 @@ const SingleStock = ({ auth, match }) => {
             <MDBCardTitle>An Error Have Occured</MDBCardTitle>
             <MDBCardText>Please try again</MDBCardText>
             <MDBBtn
+              onClick={() => window.location.reload(false)}
               gradient="young-passion"
               style={{ width: "20%", margin: "auto" }}
             >
@@ -182,13 +184,13 @@ const SingleStock = ({ auth, match }) => {
     <div className="stock-page">
       <ErrorHandler
         error={err.show}
-        confirmHandler={confirmHandler}
+        confirmHandler={confirmError}
         message={err.message}
       />
       <MDBAnimation type="fadeIn" duration="0.8s">
         <div className="stock">
           <StockLable />
-          <ControlPanel />
+          <DatePanel />
           <StockTable />
           <div className="chart">
             <DisplayChart />

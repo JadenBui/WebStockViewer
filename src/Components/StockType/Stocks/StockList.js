@@ -28,6 +28,8 @@ const StockList = () => {
     history.push(`/stocklist/stock/${symbol}`);
   };
 
+
+  //server-side filtering
   const handleChange = async (e) => {
     const stockIndustry = e.target.value;
     if (stockIndustry === EMPTY_STRING) return setStockList(data);
@@ -39,24 +41,6 @@ const StockList = () => {
     } catch (e) {
       setStockList([]);
     }
-  };
-
-  const handleChangeClientName = (e) => {
-    const stockName = e.target.value;
-    const filteredData = data.filter(
-      (data) =>
-        data.name.toLowerCase().indexOf(stockName.toLowerCase()) !== -1
-    );
-    setStockList(filteredData);
-  };
-
-  const handleChangeClientSymbol = (e) => {
-    const stockSymbol = e.target.value;
-    const filteredData = data.filter(
-      (data) =>
-        data.symbol.toLowerCase().indexOf(stockSymbol.toLowerCase()) !== -1
-    );
-    setStockList(filteredData);
   };
 
   const handleSelect = async (e) => {
@@ -75,6 +59,28 @@ const StockList = () => {
     }
   };
 
+  //client-side filtering
+  const handleChangeClientName = (e) => {
+    const stockName = e.target.value;
+    const filteredData = data.filter(
+      (data) =>
+        data.name.toLowerCase().indexOf(stockName.toLowerCase()) !== -1
+    );
+    setStockList(filteredData);
+  };
+
+  const handleChangeClientSymbol = (e) => {
+    const stockSymbol = e.target.value;
+    if(stockSymbol === "") return setStockList(data);
+    const filteredData = data.filter(
+      (data) =>
+        data.symbol.toLowerCase() === stockSymbol
+    );
+    setStockList(filteredData);
+  };
+
+  
+  //close warning backdrop
   const confirmError = () => setErr({ show: false, message: EMPTY_STRING });
 
   if (loading) {
@@ -95,6 +101,7 @@ const StockList = () => {
             <MDBCardTitle>An Error Have Occured</MDBCardTitle>
             <MDBCardText>Please try again</MDBCardText>
             <MDBBtn
+              onClick={() => window.location.reload(false)}
               gradient="young-passion"
               style={{ width: "20%", margin: "auto" }}
             >

@@ -90,6 +90,8 @@ const Chart = ({ chartData }) => {
       data: chartData.map((data) => data.low),
     },
   ];
+  
+  //render chart with selected dataset
   const chart = {
     dataLine: {
       labels: chartData.map((data) =>

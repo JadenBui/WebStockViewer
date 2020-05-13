@@ -85,6 +85,13 @@ const App = () => {
     }
   };
 
+  const handleLogOut = () => {
+    clearUser();
+    localStorage.clear();
+    setResponse({ ...response, auth: false, register: false });
+  };
+
+  //control input values
   const handleEmail = (e) => {
     const newEmail = e.target.value;
     setUser((preV) => {
@@ -106,12 +113,7 @@ const App = () => {
     });
   };
 
-  const handleLogOut = () => {
-    clearUser();
-    localStorage.clear();
-    setResponse({ ...response, auth: false, register: false });
-  };
-
+  //close warning backdrop
   const confirmHandler = () => setErr({ show: false, message: EMPTY_STRING });
 
   return (
