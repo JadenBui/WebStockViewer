@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/WebStockViewer/static/css/main.1020141a.chunk.css",
+    "main.js": "/WebStockViewer/static/js/main.7c4c6108.chunk.js",
+    "main.js.map": "/WebStockViewer/static/js/main.7c4c6108.chunk.js.map",
+    "runtime-main.js": "/WebStockViewer/static/js/runtime-main.1b1f5c02.js",
+    "runtime-main.js.map": "/WebStockViewer/static/js/runtime-main.1b1f5c02.js.map",
+    "static/css/2.0f9e80ac.chunk.css": "/WebStockViewer/static/css/2.0f9e80ac.chunk.css",
+    "static/js/2.95f3f529.chunk.js": "/WebStockViewer/static/js/2.95f3f529.chunk.js",
+    "static/js/2.95f3f529.chunk.js.map": "/WebStockViewer/static/js/2.95f3f529.chunk.js.map",
+    "index.html": "/WebStockViewer/index.html",
+    "precache-manifest.efa40a99a1929999bc501ca710bb71dc.js": "/WebStockViewer/precache-manifest.efa40a99a1929999bc501ca710bb71dc.js",
+    "service-worker.js": "/WebStockViewer/service-worker.js",
+    "static/css/2.0f9e80ac.chunk.css.map": "/WebStockViewer/static/css/2.0f9e80ac.chunk.css.map",
+    "static/css/main.1020141a.chunk.css.map": "/WebStockViewer/static/css/main.1020141a.chunk.css.map",
+    "static/js/2.95f3f529.chunk.js.LICENSE.txt": "/WebStockViewer/static/js/2.95f3f529.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/WebStockViewer/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/Layout.css": "/WebStockViewer/static/media/bground.f5e164a3.jpg",
+    "static/media/semantic.min.css": "/WebStockViewer/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/data.jpeg": "/WebStockViewer/static/media/data.a0c68086.jpeg",
+    "static/media/all.min.css": "/WebStockViewer/static/media/fa-solid-900.ec763292.svg",
+    "static/media/Home.css": "/WebStockViewer/static/media/homeBG.cd1484b5.jpg",
+    "static/media/loginBG.jpg": "/WebStockViewer/static/media/loginBG.fc676eab.jpg",
+    "static/media/programming.jpeg": "/WebStockViewer/static/media/programming.94a2c5e1.jpeg",
+    "static/media/singleCard.jpg": "/WebStockViewer/static/media/singleCard.86d890bb.jpg",
+    "static/media/stock-exchange.jpg": "/WebStockViewer/static/media/stock-exchange.dc034ef7.jpg",
+    "static/media/stock.jpeg": "/WebStockViewer/static/media/stock.e4b61b0f.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1b1f5c02.js",
+    "static/css/2.0f9e80ac.chunk.css",
+    "static/js/2.95f3f529.chunk.js",
+    "static/css/main.1020141a.chunk.css",
+    "static/js/main.7c4c6108.chunk.js"
+  ]
+}
