@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/WebStockViewer/static/css/main.1020141a.chunk.css",
-    "main.js": "/WebStockViewer/static/js/main.7c4c6108.chunk.js",
-    "main.js.map": "/WebStockViewer/static/js/main.7c4c6108.chunk.js.map",
+    "main.js": "/WebStockViewer/static/js/main.e41f42a9.chunk.js",
+    "main.js.map": "/WebStockViewer/static/js/main.e41f42a9.chunk.js.map",
     "runtime-main.js": "/WebStockViewer/static/js/runtime-main.1b1f5c02.js",
     "runtime-main.js.map": "/WebStockViewer/static/js/runtime-main.1b1f5c02.js.map",
     "static/css/2.0f9e80ac.chunk.css": "/WebStockViewer/static/css/2.0f9e80ac.chunk.css",
     "static/js/2.95f3f529.chunk.js": "/WebStockViewer/static/js/2.95f3f529.chunk.js",
     "static/js/2.95f3f529.chunk.js.map": "/WebStockViewer/static/js/2.95f3f529.chunk.js.map",
     "index.html": "/WebStockViewer/index.html",
-    "precache-manifest.efa40a99a1929999bc501ca710bb71dc.js": "/WebStockViewer/precache-manifest.efa40a99a1929999bc501ca710bb71dc.js",
+    "precache-manifest.683192edd4c2b19a2c49329191181337.js": "/WebStockViewer/precache-manifest.683192edd4c2b19a2c49329191181337.js",
     "service-worker.js": "/WebStockViewer/service-worker.js",
     "static/css/2.0f9e80ac.chunk.css.map": "/WebStockViewer/static/css/2.0f9e80ac.chunk.css.map",
     "static/css/main.1020141a.chunk.css.map": "/WebStockViewer/static/css/main.1020141a.chunk.css.map",
@@ -31,6 +31,6 @@
     "static/css/2.0f9e80ac.chunk.css",
     "static/js/2.95f3f529.chunk.js",
     "static/css/main.1020141a.chunk.css",
-    "static/js/main.7c4c6108.chunk.js"
+    "static/js/main.e41f42a9.chunk.js"
   ]
 }
