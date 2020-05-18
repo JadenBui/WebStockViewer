@@ -143,7 +143,7 @@ const App = () => {
                 <SingleStock match={match} auth={response.auth} />
               )}
             />
-            <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/WebStockViewer/" render={() => <Home />} />
             <Route
               path="/login"
               render={() => (
