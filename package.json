@@ -2,7 +2,7 @@
   "name": "asm1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://JadenBui.github.io/asm1",
+  "homepage": "http://JadenBui.github.io/WebStockViewer",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
