@@ -74,7 +74,7 @@ const StockList = () => {
     if(stockSymbol === "") return setStockList(data);
     const filteredData = data.filter(
       (data) =>
-        data.symbol.toLowerCase() === stockSymbol
+        data.symbol.toLowerCase() === stockSymbol.toLowerCase()
     );
     setStockList(filteredData);
   };
