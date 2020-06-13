@@ -22,11 +22,14 @@ Navigate to "Register" section on the navbar to register an account. After that,
 
 ## Built With
 Frontend:
+
 * [ReactJS](https://reactjs.org/) - A perfect JavaScript library for making interactive UIs.
 * [Material Desgin for Boostrap](https://mdbootstrap.com/) - A greate module for responsive components.
+
 Backend:
 * [NodeJS](https://nodejs.org/en/docs/) - A powerful JavaScript runtime environment.
 * [Express](https://expressjs.com/) - A  web application framework that provides a robust set of features for web and mobile applications.
+* [MySQL](https://www.mysql.com/) - An open-source relational database management system (RDBMS).
 
 ## Versioning
 
@@ -34,7 +37,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Jaden Bui** - *Initial work* - [PurpleBooth](https://github.com/JadenBui)
+* **Jaden Bui** - [JadenBui](https://github.com/JadenBui)
 
 ## License
 
