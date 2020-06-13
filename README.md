@@ -31,10 +31,6 @@ Backend:
 * [Express](https://expressjs.com/) - A  web application framework that provides a robust set of features for web and mobile applications.
 * [MySQL](https://www.mysql.com/) - An open-source relational database management system (RDBMS).
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
 * **Jaden Bui** - [JadenBui](https://github.com/JadenBui)
