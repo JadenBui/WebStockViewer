@@ -15,7 +15,7 @@ Run this commnand at the root level of the respository
 ```
 npm start
 ```
-You should see the applicaion running on  http://locahost:8000. 
+You should see the applicaion running on  http://locahost:3000. 
 
 ### User Guide
 
