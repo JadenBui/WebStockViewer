@@ -11,7 +11,7 @@ npm install
 
 ### Running the application
 
-Simply enter:
+Run this commnand at the root level of the respository 
 ```
 npm start
 ```
