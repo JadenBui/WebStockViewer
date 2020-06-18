@@ -12,7 +12,7 @@ import { MDBCard, MDBCardTitle, MDBCardText, MDBBtn, MDBIcon } from "mdbreact";
 
 const EMPTY_STRING = "";
 const axios_stock = axios.create({
-  baseURL: 'http://131.181.190.87:3000/stocks',
+  baseURL: "https://stocknodeserver.azurewebsites.net/stocks",
 });
 
 const StockList = () => {
@@ -27,7 +27,6 @@ const StockList = () => {
   const onClick = (symbol) => {
     history.push(`/stocklist/stock/${symbol}`);
   };
-
 
   //server-side filtering
   const handleChange = async (e) => {
@@ -63,23 +62,20 @@ const StockList = () => {
   const handleChangeClientName = (e) => {
     const stockName = e.target.value;
     const filteredData = data.filter(
-      (data) =>
-        data.name.toLowerCase().indexOf(stockName.toLowerCase()) !== -1
+      (data) => data.name.toLowerCase().indexOf(stockName.toLowerCase()) !== -1
     );
     setStockList(filteredData);
   };
 
   const handleChangeClientSymbol = (e) => {
     const stockSymbol = e.target.value;
-    if(stockSymbol === "") return setStockList(data);
+    if (stockSymbol === "") return setStockList(data);
     const filteredData = data.filter(
-      (data) =>
-        data.symbol.toLowerCase() === stockSymbol.toLowerCase()
+      (data) => data.symbol.toLowerCase() === stockSymbol.toLowerCase()
     );
     setStockList(filteredData);
   };
 
-  
   //close warning backdrop
   const confirmError = () => setErr({ show: false, message: EMPTY_STRING });
 
@@ -124,12 +120,17 @@ const StockList = () => {
         <MDBRow center>
           <MDBCol md="2" middle className="optionrow">
             <form className="form-inline mt-4 mb-4">
-              <label className="badge"><MDBIcon icon="search" /> Select Industry </label>
+              <label className="badge">
+                <MDBIcon icon="search" /> Select Industry{" "}
+              </label>
               <SelectBar onSelect={handleSelect} />
             </form>
 
             <form className="form-inline mt-4 mb-4">
-              <label className="badge"><MDBIcon icon="file-signature" />Filter By Name</label>
+              <label className="badge">
+                <MDBIcon icon="file-signature" />
+                Filter By Name
+              </label>
               <input
                 onChange={handleChangeClientName}
                 className="form-control form-control-sm ml-3 w-75"
@@ -137,7 +138,10 @@ const StockList = () => {
                 placeholder="FilterByName"
                 aria-label="Search"
               />
-              <label className="badge"><MDBIcon fab icon="sketch" />Filter By Symbol</label>
+              <label className="badge">
+                <MDBIcon fab icon="sketch" />
+                Filter By Symbol
+              </label>
               <input
                 onChange={handleChangeClientSymbol}
                 className="form-control form-control-sm ml-3 w-75"
@@ -145,7 +149,10 @@ const StockList = () => {
                 placeholder="FilterBySymbol"
                 aria-label="Search"
               />
-              <label className="badge"><MDBIcon icon="industry" />Filter By Industry</label>
+              <label className="badge">
+                <MDBIcon icon="industry" />
+                Filter By Industry
+              </label>
               <input
                 onChange={handleChange}
                 className="form-control form-control-sm ml-3 w-75"

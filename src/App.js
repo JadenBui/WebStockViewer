@@ -15,7 +15,7 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 const EMPTY_STRING = "";
 const axios_auth = axios.create({
-  baseURL: "http://131.181.190.87:3000/user",
+  baseURL: "https://stocknodeserver.azurewebsites.net/user",
 });
 
 const App = () => {

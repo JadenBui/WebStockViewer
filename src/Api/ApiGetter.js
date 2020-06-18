@@ -6,11 +6,11 @@ const ApiGetter = (tag) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://131.181.190.87:3000/stocks/${tag}`)
+      .get(`https://stocknodeserver.azurewebsites.net/stocks/${tag}`)
       .then((res) => res.data)
       .then((res) => {
         //Delay the process of returning data for loading stimulation

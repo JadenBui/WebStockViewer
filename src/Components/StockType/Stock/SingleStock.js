@@ -45,7 +45,7 @@ const SingleStock = ({ auth, match }) => {
         const data = await axios({
           method: "get",
           headers: { Authorization: `Bearer ${token}` },
-          url: `http://131.181.190.87:3000/stocks/authed/${symbol}?from=${date.from}&to=${date.to}`,
+          url: `https://stocknodeserver.azurewebsites.net/stocks/authed/${symbol}?from=${date.from}&to=${date.to}`,
         });
         const chartData = data.data;
         setChart({ dataLine: chartData });
@@ -58,7 +58,7 @@ const SingleStock = ({ auth, match }) => {
     },
     [symbol]
   );
-  
+
   //close warning backdrop
   const confirmError = () => setErr({ show: false, message: EMPTY_STRING });
 
